@@ -1,0 +1,64 @@
+#page-wrap {
+    width: 700px;
+    margin: 0 auto;
+}
+#url-site
+{
+    font-size: 13px;
+}
+#info-emp
+{
+    border: 1px solid #006699;
+    border-radius: 4px;
+    color: #262626;
+    font-size: 15px;
+}
+.center-justified {
+    text-align: justify;
+    margin: 0 auto;
+    width: 30em;
+}
+.img-logo
+{
+    width: 150px;
+    height: 150px;
+}
+.pdf-title
+{
+    color: #004466;
+    font-size: 29px;
+}
+table.outline-table {
+    border: 1px solid #ddd;
+    border-spacing: 0;
+}
+tr.border-bottom td, td.border-bottom {
+    border-bottom: 1px solid #ddd;
+}
+tr.border-top td, td.border-top {
+    border-top: 1px solid #ddd;
+}
+tr.border-right td, td.border-right {
+    border-right: 1px solid #ddd;
+}
+tr.border-right td:last-child {
+    border-right: 0px;
+}
+tr.center td, td.center {
+    text-align: center;
+    vertical-align: text-top;
+}
+td.pad-left {
+    padding-left: 5px;
+}
+tr.right-center td, td.right-center {
+    text-align: right;
+    padding-right: 50px;
+}
+tr.right td, td.right {
+    text-align: right;
+}
+.grey {
+    background:#004466;
+    color: #f2f2f2;
+}

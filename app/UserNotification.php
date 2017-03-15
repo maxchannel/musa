@@ -1,0 +1,15 @@
+<?php namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class UserNotification extends Model 
+{
+    protected $table = 'user_notifications';
+	protected $fillable = ['m','user_id','v'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+}
