@@ -52,9 +52,9 @@ class PiecesTableSeeder extends Seeder
             'title'=> $faker->text(14),
             'year'=>'2017',
             'price'=>'5000',
-            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris nisi ut aliquio.2',
+            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquio.',
             'type_id'=>1,
             'user_id'=>1,
             'loan'=>1
@@ -157,8 +157,8 @@ class PiecesTableSeeder extends Seeder
 
         $exhibition = Exhibition::create([
             'title'=> 'Los Post-Modernos',
-            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+            'description'=>'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
             ullamco laboris nisi ut aliquio.2',
             'user_id'=>1
         ]);
@@ -172,6 +172,12 @@ class PiecesTableSeeder extends Seeder
             'file_id'=> $file->id,
             'fileable_type'=> 'App\PieceIntervention',
             'fileable_id'=> $intervention->id
+        ]);
+
+        Fileable::create([
+            'file_id'=> $file->id,
+            'fileable_type'=> 'App\PieceConservation',
+            'fileable_id'=> $conservation->id
         ]);
     }
 }

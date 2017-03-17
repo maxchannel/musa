@@ -9,7 +9,7 @@ Route::group(['prefix' => 'i', 'middleware' => ['guest']], function () {
     Route::post('/login', ['as' => 'loginSend', 'uses' => 'AuthController@loginSend']);
     //Singup
     Route::get('/signup', ['as' => 'signup', 'uses' => 'AuthController@signup']);
-    Route::post('/signup', ['as' => 'signupStore', 'uses' => 'AuthController@signupStore']);     
+    Route::post('/signup', ['as' => 'signupStore', 'uses' => 'AuthController@signupStore']);
 });
 
 //Auth users

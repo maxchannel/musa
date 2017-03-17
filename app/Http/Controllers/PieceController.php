@@ -27,6 +27,7 @@ class PieceController extends Controller
 	public function profile($id)
 	{
 		$piece = Piece::find($id);
+		$this->notFoundUnless($piece);
 
         return view('profile.piece', compact('piece'));
     }
