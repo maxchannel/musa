@@ -111,16 +111,17 @@
             <div class="panel panel-default targetDiv"  id="div2">
                 <div class="panel-heading" >Campos Gráficos</div>
                 <div class="panel-body">
+                    <p class="text-danger">Padding</p>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('area_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('padding_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('area_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('padding_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
                     </div><br><br><br>
                 </div>

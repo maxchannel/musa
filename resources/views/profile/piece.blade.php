@@ -21,7 +21,7 @@
                         <li>Fecha: {{ $piece->acquisition->fecha }}</li>
                         <li>Valor económico: {{ $piece->acquisition->valuation }} USD $</li>
                     </ul>
-                    <hr>
+                    <hr>f
                 </div>
             </div>     
             <div class="panel panel-default">
@@ -180,6 +180,14 @@
                         <li>-Responsable: <a href="#">{{ $intervention->manager }}</a></li>
                         <li>-Fecha: {{ $intervention->year }}</li>
                         <li>-Proceso: {{ $intervention->process }}</li>
+                        <li>
+                            -Archivos:
+                            @if(count($intervention->files))
+                                @foreach($intervention->files as $nouu)
+                                    <a href="{{ url('download/'.$nouu->name) }}">{{ $nouu->name }}</a>
+                                @endforeach
+                            @endif
+                        </li>
                         <hr>
                     @endforeach
                     </ul>
@@ -207,7 +215,16 @@
                     <ul class="list-unstyled">
                         @if(count($piece->loans))
                             @foreach($piece->loans as $loan)
-                                <li>-Institución: {{ $loan->institution->name }}</li><hr>
+                                <li>-Institución: {{ $loan->institution->name }}</li>
+                                <li>
+                                    @if(count($loan->files))
+                                        -Archivos:<br>
+                                        @foreach($loan->files as $nouu)
+                                            <a href="{{ url('download/'.$nouu->name) }}">{{ $nouu->name }}</a><br>
+                                        @endforeach
+                                    @endif
+                                </li>
+                                <hr>
                             @endforeach
                         @endif
                     </ul>
@@ -221,6 +238,7 @@
                             @foreach($piece->exhibitions as $exhibition)
                                 <li>-Titulo: {{ $exhibition->exhibition->title }}</li>
                                 <li>-Descripción: {{ $exhibition->exhibition->description }}</li>
+
                                 <hr>
                             @endforeach
                         @endif

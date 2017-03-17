@@ -6,4 +6,9 @@ class PieceIntervention extends Model
 {
 	protected $fillable = ['process', 'piece_id', 'year', 'manager'];
 
+	public function files()
+    {
+        return $this->morphToMany('App\File', 'fileable');
+    }
+
 }

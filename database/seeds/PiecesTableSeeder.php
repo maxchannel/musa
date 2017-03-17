@@ -112,7 +112,7 @@ class PiecesTableSeeder extends Seeder
         ]);
 
         $file = File::create([
-            'name'=> 'xsdgg66v.pdf'
+            'name'=> 'xgs2.pdf'
         ]);
 
         $intervention = PieceIntervention::create([
@@ -170,7 +170,7 @@ class PiecesTableSeeder extends Seeder
 
         Fileable::create([
             'file_id'=> $file->id,
-            'fileable_type'=> 'App\Intervention',
+            'fileable_type'=> 'App\PieceIntervention',
             'fileable_id'=> $intervention->id
         ]);
     }

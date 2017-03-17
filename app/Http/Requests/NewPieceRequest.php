@@ -14,12 +14,16 @@ class NewPieceRequest extends Request
 	{
 		$rules = [];
 
-		$rules['title'] = 'required|max:30';
+		$rules['title'] = 'required';
 		$rules['type_id'] = 'required';
 
 		if($this->request->get('type_id') == 1)//Si es pintura
 		{
 			$rules['technique_id'] = 'required|numeric';
+			$rules['marco_width'] = 'required|numeric';
+			$rules['marco_height'] = 'required|numeric';
+			$rules['sin_width'] = 'required|numeric';
+			$rules['sin_height'] = 'required|numeric';
 		}
 
 		return $rules;

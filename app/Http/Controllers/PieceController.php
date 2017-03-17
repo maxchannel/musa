@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Piece;
 use App\Type;
 use App\Author;
+use App\File;
+use App\Fileable;
 use App\Technique;
 use App\PieceMounting;
 use App\PieceLoan;
@@ -88,6 +90,16 @@ class PieceController extends Controller
     		$author->technique_id = $request->input('technique_id');
     		$author->save();
     		
+		}elseif($request->input('type_id') == 2)//Gráfico
+		{
+			//Padding
+			$montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Padding';
+		    $montaje->width = $request->input('padding_width');
+		    $montaje->height = $request->input('padding_height');
+		    $montaje->save();
+    		
 		}elseif($request->input('type_id') == 3)//Escultura
 		{
 			$montaje = new PieceCube;
@@ -117,6 +129,44 @@ class PieceController extends Controller
 		$p_loan->start = $request->input('start');
 		$p_loan->end = $request->input('end');
 		$p_loan->save();
+
+		//File
+        $files = \Input::file('file');
+        if(!empty($files[0]))//Solo si se manda 1 imagen
+        {
+            foreach($files as $file) 
+            {
+                // Validate files from input file
+                $rules = ['file' => 'max:10000'];
+                $validation = \Validator::make(['file'=> $file], $rules);    
+
+                if(!$validation->fails()) 
+                {
+                	$extension = $file->getClientOriginalExtension(); 
+                    $newName = str_random(6).".".$extension;  
+
+                	$f_file = new File;
+                    $f_file->name = $newName;
+                    $f_file->save(); 
+
+                    $fileable = new Fileable;
+                    $fileable->file_id = $f_file->id;
+                    $fileable->fileable_type = 'App\PieceLoan';
+                    $fileable->fileable_id = $p_loan->id;
+                    $fileable->save();  
+
+                    ///Move file to images/post
+                    $file->move('files/',$newName); 
+                }else 
+                {
+                    \Session::flash('image-message', 'Los archivos deben pesar máximo 10Mb');
+                }
+            }
+        }else
+        {
+            return \Redirect::back()->with('image-message', 'Debes seleccionar al menos 1 imágen');
+        }
+        //File
 
 		//Seteando que la pieza fue prestada
 		$piece = Piece::find($request->input('piece_id'));

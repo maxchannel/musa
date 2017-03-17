@@ -122,7 +122,11 @@ return [
         'title'=>'Titulo',
         'technique_id' => 'Técnica',
         'start'=>'Inicio',
-        'end'=>'Fin'
+        'end'=>'Fin',
+        'marco_width'=>'Anchura con Marco',
+        'marco_height'=>'Altura con Marco',
+        'sin_width'=>'Anchura sin Marco',
+        'sin_height'=>'Altura sin Marco'
     ],
 
 ];

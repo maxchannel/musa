@@ -15,4 +15,9 @@ class PieceLoan extends Model
     {
         return $this->hasOne('App\Institution', 'id', 'institution_id');
     }
+
+    public function files()
+    {
+        return $this->morphToMany('App\File', 'fileable');
+    }
 }
