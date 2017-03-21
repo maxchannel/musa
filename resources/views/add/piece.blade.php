@@ -39,7 +39,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Año*</label>
                         <div class="col-md-6">
-                           {!! Form::select('year',[''=>'Seleccionar', '2016'=>'2016'],null,['class'=>'form-control']) !!}
+                           {!! Form::text('year',null,['class'=>'form-control', 'placeholder'=>'Año']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -64,8 +64,10 @@
 
             <div class="buttons">
             <a class="btn btn-primary showSingle" target="1">Pintura</a>
-            <a class="btn btn-success showSingle" target="2">Gráfico</a>
-            <a class="btn btn-warning showSingle" target="3">Escultura</a>
+            <a class="btn btn-success showSingle" target="2">Gráfica</a>
+            <a class="btn btn-warning showSingle" target="3">Escultura</a><br><br>
+            <a class="btn btn-default showSingle" target="4">Fotografía</a>
+            <a class="btn btn-info showSingle" target="5">Escultura</a>
             </div>            
 
             <br>

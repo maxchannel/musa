@@ -17,6 +17,11 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     //Logout
     Route::get('/logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 
+    //Panorama
+    Route::get('panorama/{id}', ['as' => 'piece_panorama', 'uses' => 'PieceController@panorama']);
+    Route::get('panorama/publications/{id}', ['as' => 'piece_panorama_publications', 'uses' => 'PanoramaController@publications']);
+    Route::delete('panorama/destroy/publication/{id}', ['as' => 'piece_publication_destroy', 'uses' => 'PanoramaController@destroy_piece_publication']);
+
     //Piece
     Route::get('/add/piece', ['as' => 'add_piece', 'uses' => 'PieceController@create']);
     Route::post('/add/piece', ['as' => 'add_piece_store', 'uses' => 'PieceController@store']);

@@ -44,6 +44,7 @@
                     </td>
                     <td>
                         <a href="{{ route('piece_profile', [$piece->id]) }}" class="btn btn-primary btn-xs">Detalles</a>
+                        <a href="{{ route('piece_panorama', [$piece->id]) }}" class="btn btn-success btn-xs">Panorama</a>
                         <a href="{{ route('edit_piece', [$piece->id]) }}" class="btn btn-warning btn-xs">Editar</a>
                     </td>
                 </tr>

@@ -194,4 +194,13 @@ class PieceController extends Controller
         return \Redirect::back()->with('message', 'Guardado con éxito');
     }
 
+    public function panorama($id)
+	{
+		$piece = Piece::find($id);
+		$this->notFoundUnless($piece);
+		$types = Type::orderBy('id', 'ASC')->lists('name', 'id');
+
+        return view('panorama.home', compact('piece', 'types'));
+    }
+
 }

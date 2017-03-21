@@ -68,7 +68,12 @@ class Piece extends Model
 
     public function publications()
     {
-       return $this->belongsToMany('App\Publication', 'piece_publications','piece_id', 'publication_id');
+       return $this->belongsToMany('App\Publication', 'piece_publications','piece_id', 'publication_id')->withPivot('id','deleted_at');
+    }
+
+    public function publicationsVigent() 
+    {
+        return $this->publications()->wherePivot('deleted_at', NULL);
     }
 
 }
