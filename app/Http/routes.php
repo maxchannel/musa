@@ -17,10 +17,20 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     //Logout
     Route::get('/logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 
-    //Panorama
+    // ***Panorama***
     Route::get('panorama/{id}', ['as' => 'piece_panorama', 'uses' => 'PieceController@panorama']);
+    //Publication
     Route::get('panorama/publications/{id}', ['as' => 'piece_panorama_publications', 'uses' => 'PanoramaController@publications']);
     Route::delete('panorama/destroy/publication/{id}', ['as' => 'piece_publication_destroy', 'uses' => 'PanoramaController@destroy_piece_publication']);
+    //Exhibition
+    Route::get('panorama/exhibitions/{id}', ['as' => 'piece_panorama_exhibitions', 'uses' => 'PanoramaController@exhibitions']);
+    Route::delete('panorama/destroy/exhibition/{id}', ['as' => 'piece_exhibition_destroy', 'uses' => 'PanoramaController@destroy_piece_exhibition']);
+    //Loan
+    Route::get('panorama/loans/{id}', ['as' => 'piece_panorama_loans', 'uses' => 'PanoramaController@loans']);
+    Route::delete('panorama/destroy/loan/{id}', ['as' => 'piece_loan_destroy', 'uses' => 'PanoramaController@destroy_piece_loan']);
+    //Intervention
+    Route::get('panorama/interventions/{id}', ['as' => 'piece_panorama_interventions', 'uses' => 'PanoramaController@interventions']);
+    Route::delete('panorama/destroy/intervention/{id}', ['as' => 'piece_intervention_destroy', 'uses' => 'PanoramaController@destroy_piece_intervention']);
 
     //Piece
     Route::get('/add/piece', ['as' => 'add_piece', 'uses' => 'PieceController@create']);
@@ -28,6 +38,10 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     Route::get('/edit/piece/{id}', ['as' => 'edit_piece', 'uses' => 'PieceController@edit']);
     Route::put('/edit/piece/{id}', ['as' => 'edit_piece_store', 'uses' => 'PieceController@update']);
     Route::get('/list/piece', ['as' => 'piece_list', 'uses' => 'PieceController@tabular']);
+
+    //Intervention
+    Route::get('/add/intervention', ['as' => 'add_intervention', 'uses' => 'InterventionController@create']);
+    Route::post('/add/intervention', ['as' => 'add_intervention_store', 'uses' => 'InterventionController@store']);
 
     //Institution
     Route::get('/add/institution', ['as' => 'add_institution', 'uses' => 'InstitutionController@create']);
@@ -39,6 +53,8 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     //Loan
     Route::get('/add/loan', ['as' => 'add_loan', 'uses' => 'PieceController@loan']);
     Route::post('/add/loan', ['as' => 'add_loan_store', 'uses' => 'PieceController@loanStore']);
+    Route::get('/edit/loan/{id}', ['as' => 'edit_loan', 'uses' => 'LoanController@edit']);
+    Route::put('/edit/loan/{id}', ['as' => 'edit_loan_store', 'uses' => 'LoanController@update']);
 
     //Exhibition
     Route::get('/add/exhibition', ['as' => 'add_exhibition', 'uses' => 'ExhibitionController@create']);

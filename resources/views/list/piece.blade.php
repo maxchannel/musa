@@ -17,6 +17,22 @@
                     {{ Session::get('message') }}
                 </div>
             @endif
+
+            <p class="pull-right">
+                Ordenar(
+                    @if(\Request::input('sort') == 'fecha' || \Request::input('sort') == 'fecha_a')
+                    Fecha
+                    @else
+                    <a href="{{ route('piece_list', ['sort'=>'fecha']) }}">Fecha</a>
+                    @endif
+                    )        
+
+                    @if(\Request::input('sort') == 'fecha')
+                    <a href="{{ route('piece_list', ['sort'=>'fecha_a']) }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+                    @elseif(\Request::input('sort') == 'fecha_a')
+                    <a href="{{ route('piece_list', ['sort'=>'fecha']) }}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+                    @endif
+            </p>
             <table class="table table-hover">
                 <tr>
                     <th>Nombre</th>

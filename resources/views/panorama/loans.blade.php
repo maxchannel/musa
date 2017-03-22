@@ -11,7 +11,7 @@
             <a href="{{ route('piece_panorama', $piece->id) }}" class="btn btn-info">Volver</a>
         </div>
         <div class="col-md-10">
-            <h1 class="text-center">Editar Publicaciones</h1>
+            <h1 class="text-center">Editar Préstamos</h1>
             @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -19,28 +19,26 @@
                 </div>
             @endif
 
-            @if(count($piece->publicationsVigent))
+            @if(count($piece->loans))
             <table class="table table-hover">
                 <tr>
-                    <th>Titulo</th>
-                    <th>Fecha</th>
+                    <th>Manager</th>
                     <th>Creado</th>
                     <th></th>
                 </tr>
                 
-                    @foreach($piece->publicationsVigent as $i => $publication)
-                    <tr data-id="{{ $publication->pivot->id }}">
-                        <td>{{ $publication->title }}</td>
-                        <td>{{ $publication->fecha }}</td>
+                    @foreach($piece->loans as $i => $loan)
+                    <tr data-id="{{ $loan->id }}">
+                        <td>{{ $loan->manager }}</td>
                         <td>
                             <script>
                             moment.locale("es");
-                            document.writeln(moment.utc("{{ $publication->created_at }}", "YYYYMMDD hh:mm:ss").fromNow());
+                            document.writeln(moment.utc("{{ $loan->created_at }}", "YYYYMMDD hh:mm:ss").fromNow());
                             </script>
                         </td>
                         <td>
                             <a href="" class="btn btn-danger btn-xs btn-delete">Eliminar</a>
-                            <a href="{{ route('edit_publication', [$publication->id]) }}" class="btn btn-warning btn-xs">Editar</a>
+                            <a href="{{ route('edit_loan', [$loan->id]) }}" class="btn btn-warning btn-xs">Editar</a>
                         </td>
                     </tr>
                     @endforeach
@@ -53,7 +51,7 @@
     </div>
 </div>
 
-{!! Form::open(['route'=>['piece_publication_destroy', ':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
+{!! Form::open(['route'=>['piece_loan_destroy', ':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 {!! Form::close() !!}
 @endsection
 

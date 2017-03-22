@@ -54,6 +54,7 @@
                                 <li><a href="{{ route('add_asoc_publication') }}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Asociar Publicación</a></li>
                                 <li><a href="{{ route('add_institution') }}"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Institución</a></li>
                                 <li><a href="{{ route('add_loan') }}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Préstamo</a></li>
+                                <li><a href="{{ route('add_intervention') }}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Intervención</a></li>
                             </ul>
                         </li>
 

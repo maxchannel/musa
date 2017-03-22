@@ -67,7 +67,7 @@
             <a class="btn btn-success showSingle" target="2">Gráfica</a>
             <a class="btn btn-warning showSingle" target="3">Escultura</a><br><br>
             <a class="btn btn-default showSingle" target="4">Fotografía</a>
-            <a class="btn btn-info showSingle" target="5">Escultura</a>
+            <a class="btn btn-info showSingle" target="5">Dibujo</a>
             </div>            
 
             <br>
@@ -111,7 +111,7 @@
             </div>
 
             <div class="panel panel-default targetDiv"  id="div2">
-                <div class="panel-heading" >Campos Gráficos</div>
+                <div class="panel-heading" >Campos Gráfica</div>
                 <div class="panel-body">
                     <p class="text-danger">Padding</p>
                     <div class="form-group">
@@ -152,6 +152,54 @@
                     </div>
                 </div>
             </div>
+
+             <div class="panel panel-default targetDiv" id="div4">
+                <div class="panel-heading">Campos Fotografía</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Largo*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Alto*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="panel panel-default targetDiv" id="div5">
+                <div class="panel-heading">Campos Dibujo</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Largo*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Alto*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('cube_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
             {!! Form::close() !!}
 
         </div>
@@ -164,6 +212,8 @@
 $('#div1').hide();
 $('#div2').hide();
 $('#div3').hide();
+$('#div4').hide();
+$('#div5').hide();
 jQuery(function(){
     jQuery('#showall').click(function(){
         jQuery('.targetDiv').show();

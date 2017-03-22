@@ -63,7 +63,12 @@ class Piece extends Model
 
     public function exhibitions()
     {
-        return $this->hasMany('App\PieceExhibition');
+        return $this->belongsToMany('App\Exhibition', 'piece_exhibitions','piece_id', 'exhibition_id')->withPivot('id','deleted_at');
+    }
+
+    public function exhibitionsVigent() 
+    {
+        return $this->exhibitions()->wherePivot('deleted_at', NULL);
     }
 
     public function publications()

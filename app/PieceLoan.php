@@ -1,10 +1,14 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PieceLoan extends Model 
 {
-	protected $fillable = ['piece_id', 'institution_id', 'period', 'manager', 'acuerdo'];
+    use SoftDeletes;
+
+	protected $fillable = ['piece_id', 'institution_id', 'period', 'manager', 'acuerdo', 'start', 'end'];
+    protected $dates = ['deleted_at'];
 
 	public function piece()
     {

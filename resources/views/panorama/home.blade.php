@@ -103,7 +103,7 @@
             <div class="col-md-3">
                 <h4>Publicaciones (<a href="{{ route('piece_panorama_publications', $piece->id) }}">Editar</a>)</h4>
                 <ul class="list-unstyled">
-                    @if(count($piece->publications))
+                    @if(count($piece->publicationsVigent))
                         <li>-Titulo: {{ $piece->publications->first()->title }}</li>
                         <li>-Author: {{ $piece->publications->first()->author }}</li>
                         <li>-Fecha: {{ $piece->publications->first()->fecha }}</li>
@@ -115,30 +115,30 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <h4>Exhibiciones (<a href="">Editar</a>)</h4>
+                <h4>Exhibiciones (<a href="{{ route('piece_panorama_exhibitions', $piece->id) }}">Editar</a>)</h4>
                 <ul class="list-unstyled">
-                    @if(count($piece->exhibitions))
-                        <li>-Titulo: {{ $piece->exhibitions->first()->exhibition->title }}</li>
-                        <li>-Descripción: {{ substr($piece->exhibitions->first()->exhibition->description, 0, 90) }}...</li>
+                    @if(count($piece->exhibitionsVigent))
+                        <li>-Titulo: {{ $piece->exhibitions->first()->title }}</li>
+                        <li>-Descripción: {{ substr($piece->exhibitions->first()->description, 0, 90) }}...</li>
                         <hr>
                     @else
-                        <p class="text-muted">Sin Publicaciones Aún</p>
+                        <p class="text-muted">Sin Exhibiciones Aún</p>
                     @endif
-                </ul>
+                </ul> 
             </div>
             <div class="col-md-3">
-                <h4>Préstamos (<a href="">Editar</a>)</h4>
+                <h4>Préstamos (<a href="{{ route('piece_panorama_loans', $piece->id) }}">Editar</a>)</h4>
                 <ul class="list-unstyled">
                     @if(count($piece->loans))
                         <li>-Institución: {{ $piece->loans->first()->institution->name}}</li>
                         <hr>
                     @else
-                        <p class="text-muted">Sin Publicaciones Aún</p>
+                        <p class="text-muted">Sin Préstamos Aún</p>
                     @endif
                 </ul>
             </div>
             <div class="col-md-3">
-                <h4>Intervenciones (<a href="">Editar</a>)</h4>
+                <h4>Intervenciones (<a href="{{ route('piece_panorama_interventions', $piece->id) }}">Editar</a>)</h4>
                 <ul class="list-unstyled">
                     @if(count($piece->interventions))
                         <li>-Responsable: <a href="#">{{ $piece->interventions->first()->manager }}</a></li>
@@ -146,7 +146,7 @@
                         <li>-Proceso: {{ $piece->interventions->first()->process }}</li>
                         <hr>
                     @else
-                        <p class="text-muted">Sin Publicaciones Aún</p>
+                        <p class="text-muted">Sin Intervenciones Aún</p>
                     @endif
                 </ul>
             </div>

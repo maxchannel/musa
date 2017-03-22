@@ -130,14 +130,15 @@ class PiecesTableSeeder extends Seeder
         $loan = PieceLoan::create([
             'manager'=> 'Pedro',
             'institution_id'=>$institution->id,
-            'piece_id'=>$piece->id
+            'piece_id'=>$piece->id,
+            'start'=>'2017-01-02',
+            'end'=>'2017-01-09'
         ]);
 
         $vault = PieceVault::create([
             'rack'=> '8B',
             'piece_id'=>$piece->id
         ]);
-
         $publi = Publication::create([
             'title'=> 'Revista de Arte',
             'author'=>'Juan',
@@ -146,11 +147,6 @@ class PiecesTableSeeder extends Seeder
         ]);
 
         $publication = PiecePublication::create([
-            'publication_id'=> $publi->id,
-            'piece_id'=>$piece->id
-        ]);
-
-        $publication2 = PiecePublication::create([
             'publication_id'=> $publi->id,
             'piece_id'=>$piece->id
         ]);
