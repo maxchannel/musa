@@ -33,7 +33,7 @@ class PiecesTableSeeder extends Seeder
             'name'=> 'Pintura'
         ]);
         Type::create([
-            'name'=> 'Gráfico'
+            'name'=> 'Gráfica'
         ]);
         Type::create([
             'name'=> 'Escultura'

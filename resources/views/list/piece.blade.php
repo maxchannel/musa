@@ -20,12 +20,24 @@
 
             <p class="pull-right">
                 Ordenar(
+                    @if(\Request::input('sort') == 'name' || \Request::input('sort') == 'title_a')
+                    Nombre
+                    @else
+                    <a href="{{ route('piece_list', ['sort'=>'title']) }}">Nombre</a>
+                    @endif
+                    /
                     @if(\Request::input('sort') == 'fecha' || \Request::input('sort') == 'fecha_a')
                     Fecha
                     @else
                     <a href="{{ route('piece_list', ['sort'=>'fecha']) }}">Fecha</a>
                     @endif
-                    )        
+                    )    
+
+                    @if(\Request::input('sort') == 'title')
+                    <a href="{{ route('piece_list', ['sort'=>'title_a']) }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+                    @elseif(\Request::input('sort') == 'title_a')
+                    <a href="{{ route('piece_list', ['sort'=>'title']) }}"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></a>
+                    @endif    
 
                     @if(\Request::input('sort') == 'fecha')
                     <a href="{{ route('piece_list', ['sort'=>'fecha_a']) }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
@@ -35,8 +47,9 @@
             </p>
             <table class="table table-hover">
                 <tr>
-                    <th>Nombre</th>
+                    <th>Título</th>
                     <th>Tipo</th>
+                    <th>Año</th>
                     <th></th>
                     <th>Creado</th>
                     <th></th>
@@ -45,6 +58,7 @@
                 <tr>
                     <td>{{ $piece->title }}</td>
                     <td>{{ $piece->type->name }}</td>
+                    <td>{{ $piece->year }}</td>
                     <td>
                         @if(count($piece->images))
                             <img src="{{ asset('images/'.$piece->images->first()->name) }}" style="width:100px">

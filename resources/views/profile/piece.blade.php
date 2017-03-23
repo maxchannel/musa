@@ -8,9 +8,9 @@
                 <div class="panel-heading">Ficha Técnica</div>
                 <div class="panel-body">
                     <ul class="list-unstyled">
-                        <li>Tipo de objeto: <a href="">{{ $piece->type->name }}</a></li>
-                        <li>Autor: <a href="">{{ $piece->authors->first()->name }}</a></li>
-                        <li>Año: <a href="">{{ $piece->year }}</a></li>
+                        <li>Tipo de objeto: <a href="{{route('command_line', ['query'=>$piece->type->id, 'mode'=>'types', 'header'=>$piece->type->name])}}">{{ $piece->type->name }}</a></li>
+                        <li>Autor: <a href="{{route('command_line', ['query'=>$piece->authors->first()->name])}}">{{ $piece->authors->first()->name }}</a></li>
+                        <li>Año: <a href="{{route('command_line', ['query'=>$piece->year])}}">{{ $piece->year }}</a></li>
                         <li>Número de Elementos: {{ $piece->elements }}</li>
                         <li>Valor económico: {{ $piece->price }} $</li>
                         @if(count($piece->conservations))
@@ -325,15 +325,17 @@
                 <div class="panel-heading">Exhibiciones MUSA</div>
                 <div class="panel-body">
                     <ul class="list-unstyled">
-                        @if(count($piece->exhibitions))
-                            <li>-Titulo: {{ $piece->exhibitions->first()->exhibition->title }}</li>
-                            <li>-Descripción: {{ $piece->exhibitions->first()->exhibition->description }}</li>
+                        @if(count($piece->exhibitionsVigent))
+                            <li>-Titulo: {{ $piece->exhibitions->first()->title }}</li>
+                            <li>-Descripción: {{ substr($piece->exhibitions->first()->description, 0, 90) }}...</li>
                             <hr>
+                        @else
+                            <p class="text-muted">Sin Exhibiciones Aún</p>
                         @endif
                     </ul>
                     <div class="text-center"><!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExhi">
-                            Ver todo ({{count($piece->exhibitions)}})
+                            Ver todo ({{count($piece->exhibitionsVigent)}})
                         </button>
                     </div>
                 </div>
@@ -348,13 +350,14 @@
                         </div>
                         <div class="modal-body">
                             <ul class="list-unstyled">
-                            <!-- tabulando -->
-                            @if(count($piece->exhibitions))
-                                @foreach($piece->exhibitions as $exhibition)
-                                    <li>-Titulo: {{ $exhibition->exhibition->title }}</li>
-                                    <li>-Descripción: {{ $exhibition->exhibition->description }}</li>
+                            @if(count($piece->exhibitionsVigent))
+                                @foreach($piece->exhibitionsVigent as $exhibition)
+                                    <li>-Titulo: {{ $exhibition->title }}</li>
+                                    <li>-Descripción: {{ $exhibition->description }}</li>
                                     <hr>
                                 @endforeach
+                            @else
+                                <p class="text-muted">Sin Exhibiciones Aún</p>
                             @endif
                             <!-- tabulando -->
                             </ul>

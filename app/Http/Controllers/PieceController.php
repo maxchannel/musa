@@ -34,8 +34,30 @@ class PieceController extends Controller
 
 	public function tabular()
 	{
-		$pieces = Piece::orderBy('created_at','DESC')->paginate(25);
+		$previo = Piece::where('deleted_at',NULL);
+        $sort = \Request::input('sort');
 
+        if($sort)
+        {
+            if($sort == 'title')
+            {
+                $previo->orderBy('title','DESC');
+            }elseif($sort == 'title_a')
+            {
+                $previo->orderBy('title','ASC');
+            }elseif($sort == 'fecha')
+            {
+                $previo->orderBy('year','DESC');
+            }elseif($sort == 'fecha_a')
+            {
+                $previo->orderBy('year','ASC');
+            }
+        }else
+        {
+            $previo->orderBy('title', 'DESC');
+        }
+
+		$pieces = $previo->paginate(25);
         return view('list.piece', compact('pieces'));
     }
 

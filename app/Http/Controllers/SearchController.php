@@ -15,38 +15,45 @@ class SearchController extends Controller
     public function search()
     {
         $query = \Request::input('query');
+        $mode = \Request::input('mode');
+
+        //Solo de un tipo de obra
+        $tipos = Piece::where('type_id', $query)->orderBy('created_at', 'DESC')->paginate(25);
+        //Solo de un tipo de obra 
 
         //User
         $user = User::orderBy('created_at', 'DESC');
         $user->where('name','like', '%'.$query.'%');
         $results_users = $user->get();
-        //User
+        //User     
 
         //Piece
         $obra = Piece::orderBy('created_at', 'DESC');
         $obra->where('title','like', '%'.$query.'%');
+        $obra->orWhere('year', $query);
         $results_piece = $obra->get();
-        //Piece
+        //Piece     
 
         //Author
         $obra = Author::orderBy('created_at', 'DESC');
         $obra->where('name','like', '%'.$query.'%');
         $results_author = $obra->get();
-        //Author
+        //Author     
 
         //Exhibition
         $exhi = Exhibition::orderBy('created_at', 'DESC');
         $exhi->where('title','like', '%'.$query.'%');
         $results_exis = $exhi->get();
-        //Exhibition
+        //Exhibition     
 
         //Institution
         $insti = Institution::orderBy('created_at', 'DESC');
         $insti->where('name','like', '%'.$query.'%');
         $results_insti = $insti->get();
         //Institution
+        
 
         return view('search.search', compact('results_piece', 'results_author', 'query', 'results_exis', 'results_insti',
-            'results_users'));
+            'results_users', 'tipos'));
     }
 }
