@@ -100,7 +100,7 @@
             @if($results_author->count() > 0)
                 <h3>Autores:</h3>
                 @foreach($results_author as $author)
-                {{ $author->name }}, obras:<br>
+                {{ $author->name }}, obras({{count($author->pieces)}}):<br>
                     <ul>
                     @if(count($author->pieces))
                         @foreach($author->pieces as $piece)

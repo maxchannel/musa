@@ -8,6 +8,6 @@ class Author extends Model
 	
     public function pieces()
     {
-       return $this->belongsToMany('App\Piece', 'piece_authors','piece_id', 'author_id')->withPivot('id','deleted_at');
+       return $this->belongsToMany('App\Piece', 'piece_authors','author_id', 'piece_id')->withPivot('id','deleted_at');
     }
 }

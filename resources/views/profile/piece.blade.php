@@ -177,9 +177,10 @@
 
             <br>
             <div class="text-center"><!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                     Ampliar
                 </button>
+                <a href="{{route('pdf_piece', $piece->id)}}" class="btn btn-default" target="_blank">PDF</a>
             </div>
             @endif
             <!-- Imágen -->
@@ -187,7 +188,7 @@
 
         <div class="col-md-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Campos Gráficos</div>
+                <div class="panel-heading">Campos {{$piece->type->name}}</div>
                 <div class="panel-body">
                     Técnica: <a href="">{{ $piece->techniques->first()->name }}</a>
                     <ul class="list-unstyled">
@@ -351,17 +352,49 @@
                         <div class="modal-body">
                             <ul class="list-unstyled">
                             @if(count($piece->exhibitionsVigent))
-                                @foreach($piece->exhibitionsVigent as $exhibition)
-                                    <li>-Titulo: {{ $exhibition->title }}</li>
-                                    <li>-Descripción: {{ $exhibition->description }}</li>
-                                    <hr>
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                @foreach($piece->exhibitionsVigent as $key => $exhibition)
+                                    @if($key == 0)
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="true" aria-controls="collapse{{$key}}">
+                                            {{$exhibition->title}}
+                                          </a>
+                                        </h4>
+                                      </div>
+                                      <div id="collapse{{$key}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                          {{$exhibition->description}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    @else
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading" role="tab" id="heading{{$key}}">
+                                        <h4 class="panel-title">
+                                          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$key}}" aria-expanded="false" aria-controls="collapse{{$key}}">
+                                            {{$exhibition->title}}
+                                          </a>
+                                        </h4>
+                                      </div>
+                                      <div id="collapse{{$key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$key}}">
+                                        <div class="panel-body">
+                                          {{$exhibition->description}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    @endif
                                 @endforeach
+                                </div>
                             @else
                                 <p class="text-muted">Sin Exhibiciones Aún</p>
                             @endif
+
                             <!-- tabulando -->
                             </ul>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>

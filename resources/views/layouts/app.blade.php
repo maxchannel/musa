@@ -70,7 +70,6 @@
                         </li>
 
                         <li><a href="{{ route('statistic_basic') }}"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Estadísticas</a></li>
-                        <li><a href="{{ route('statistic_basic') }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Mensajes</a></li>
                         <li>
                             <a href="{{ route('notifications') }}"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                                 Notificaciones

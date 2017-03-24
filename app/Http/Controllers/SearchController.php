@@ -35,9 +35,9 @@ class SearchController extends Controller
         //Piece     
 
         //Author
-        $obra = Author::orderBy('created_at', 'DESC');
-        $obra->where('name','like', '%'.$query.'%');
-        $results_author = $obra->get();
+        $obra2 = Author::orderBy('created_at', 'DESC');
+        $obra2->where('name','like', '%'.$query.'%');
+        $results_author = $obra2->get();
         //Author     
 
         //Exhibition

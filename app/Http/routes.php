@@ -98,6 +98,8 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
 
     Route::get('/settings/pass', ['as' => 'settings_pass', 'uses' => 'SettingController@settings_pass']);
     Route::post('/settings/pass', ['as' => 'settings_pass_store', 'uses' => 'SettingController@settings_pass_store']);
+
+    Route::get('/pdf/piece/{id}', ['as' => 'pdf_piece', 'uses' => 'PDFController@index']);
 });
 
 
