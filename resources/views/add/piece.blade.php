@@ -43,6 +43,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-md-4 control-label">Precio*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('price',null,['class'=>'form-control', 'placeholder'=>'Precio']) !!}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-md-4 control-label">Descripción*</label>
                         <div class="col-md-6">
                            {!! Form::textarea('description',null,['class'=>'form-control', 'placeholder'=>'Titulo']) !!}
@@ -113,20 +119,55 @@
             <div class="panel panel-default targetDiv"  id="div2">
                 <div class="panel-heading" >Campos Gráfica</div>
                 <div class="panel-body">
-                    <p class="text-danger">Padding</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Técnica*</label>
+                        <div class="col-md-6">
+                           {!! Form::select('technique_graph_id',[''=>'Seleccionar']+$techs,null,['class'=>'form-control']) !!}
+                        </div>
+                    </div><br><br>
+                    <hr>
+                    <p class="text-success">Padding</p>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('padding_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('graph_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('padding_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('graph_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br>
+                    <p class="text-danger">con Marco</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('graph_con_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Largo*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('graph_con_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br>
+                    <p class="text-primary">sin Marco</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('graph_sin_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Largo*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('graph_sin_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
                     </div><br><br><br>
+                    <br><br><br>
                 </div>
+
             </div>
 
             <div class="panel panel-default targetDiv" id="div3">
@@ -156,48 +197,64 @@
              <div class="panel panel-default targetDiv" id="div4">
                 <div class="panel-heading">Campos Fotografía</div>
                 <div class="panel-body">
+                    <p class="text-danger">con Marco</p>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('photo_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('photo_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br>
+                    <p class="text-primary">sin Marco</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('photo_sin_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Alto*</label>
+                        <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
+                           {!! Form::text('photo_sin_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
-                    </div>
+                    </div><br><br><br>
                 </div>
             </div>
 
              <div class="panel panel-default targetDiv" id="div5">
                 <div class="panel-heading">Campos Dibujo</div>
                 <div class="panel-body">
+                    <p class="text-danger">con Marco</p>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('draw_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('draw_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                        </div>
+                    </div><br>
+                    <p class="text-primary">sin Marco</p>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ancho*</label>
+                        <div class="col-md-6">
+                           {!! Form::text('draw_sin_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Alto*</label>
+                        <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
+                           {!! Form::text('draw_sin_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
-                    </div>
+                    </div><br><br><br>
                 </div>
             </div>
             {!! Form::close() !!}

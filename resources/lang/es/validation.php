@@ -126,7 +126,19 @@ return [
         'marco_width'=>'Anchura con Marco',
         'marco_height'=>'Altura con Marco',
         'sin_width'=>'Anchura sin Marco',
-        'sin_height'=>'Altura sin Marco'
+        'sin_height'=>'Altura sin Marco',
+
+        'photo_width'=>'Anchura de Fotografía',
+        'photo_height'=>'Altura de Fotografía',
+        'photo_sin_width'=>'Anchura sin Marco Fotografía',
+        'photo_sin_height'=>'Altura sin Marco Fotografía',
+
+        'draw_width'=>'Anchura de Dibujo',
+        'draw_height'=>'Altura de Dibujo',
+        'draw_sin_width'=>'Anchura sin Marco Dibujo',
+        'draw_sin_height'=>'Altura sin Marco Dibujo',
+
+        'price' => 'Precio',
     ],
 
 ];

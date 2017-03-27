@@ -77,6 +77,7 @@ class PieceController extends Controller
 		$piece->title = $request->input('title');
 		$piece->description = $request->input('description');
 		$piece->year = $request->input('year');
+		$piece->type_id = $request->input('type_id');
 		$piece->user_id = \Auth::user()->id;
 		$piece->save();
 
@@ -118,9 +119,25 @@ class PieceController extends Controller
 			//Padding
 			$montaje = new PieceArea;
 		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Con Marco';
+		    $montaje->width = $request->input('graph_width');
+		    $montaje->height = $request->input('graph_height');
+		    $montaje->save();
+
+		    //Sin Marco
+		    $montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Sin Marco';
+		    $montaje->width = $request->input('graph_sin_width');
+		    $montaje->height = $request->input('graph_sin_height');
+		    $montaje->save();
+
+		    //Marco
+		    $montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
 		    $montaje->type = 'Padding';
-		    $montaje->width = $request->input('padding_width');
-		    $montaje->height = $request->input('padding_height');
+		    $montaje->width = $request->input('graph_con_width');
+		    $montaje->height = $request->input('graph_con_height');
 		    $montaje->save();
     		
 		}elseif($request->input('type_id') == 3)//Escultura
@@ -131,8 +148,45 @@ class PieceController extends Controller
 		    $montaje->height = $request->input('cube_height');
 		    $montaje->long = $request->input('cube_long');
 		    $montaje->save();
+		}elseif($request->input('type_id') == 4)//Fotografia
+		{
+			//Marco
+			$montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Con Marco';
+		    $montaje->width = $request->input('photo_width');
+		    $montaje->height = $request->input('photo_height');
+		    $montaje->save();
+
+		    //Sin Marco
+		    $montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Sin Marco';
+		    $montaje->width = $request->input('photo_sin_width');
+		    $montaje->height = $request->input('photo_sin_height');
+		    $montaje->save();
+    		
+		}elseif($request->input('type_id') == 5)//Dibujo
+		{
+			//Marco
+			$montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Con Marco';
+		    $montaje->width = $request->input('draw_width');
+		    $montaje->height = $request->input('draw_height');
+		    $montaje->save();
+
+		    //Sin Marco
+		    $montaje = new PieceArea;
+		    $montaje->piece_id = $piece->id;
+		    $montaje->type = 'Sin Marco';
+		    $montaje->width = $request->input('draw_sin_width');
+		    $montaje->height = $request->input('draw_sin_height');
+		    $montaje->save();
+    		
 		}
 
+		
 		return \Redirect::back()->with('message', 'Guardado con éxito');
 	}
 

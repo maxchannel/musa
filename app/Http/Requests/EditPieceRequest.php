@@ -13,7 +13,7 @@ class EditPieceRequest extends Request
 	public function rules()
 	{
 		return [
-            'title' => 'required|min:3|max:30',
+            'title' => 'required',
         ];
 	}
 

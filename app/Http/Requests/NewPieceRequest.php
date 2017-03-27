@@ -16,6 +16,7 @@ class NewPieceRequest extends Request
 
 		$rules['title'] = 'required';
 		$rules['type_id'] = 'required';
+		$rules['price'] = 'required|numeric';
 
 		if($this->request->get('type_id') == 1)//Si es pintura
 		{
@@ -24,6 +25,36 @@ class NewPieceRequest extends Request
 			$rules['marco_height'] = 'required|numeric';
 			$rules['sin_width'] = 'required|numeric';
 			$rules['sin_height'] = 'required|numeric';
+		}elseif($this->request->get('type_id') == 2)//Si es gráfica
+		{
+			$rules['technique_graph_id'] = 'required|numeric';
+			$rules['graph_height'] = 'required|numeric';
+			$rules['graph_width'] = 'required|numeric';
+			$rules['graph_con_width'] = 'required|numeric';
+			$rules['graph_con_width'] = 'required|numeric';
+			$rules['graph_sin_width'] = 'required|numeric';
+			$rules['graph_sin_height'] = 'required|numeric';
+		}elseif($this->request->get('type_id') == 3)//Si es gráfica
+		{
+			$rules['technique_graph_id'] = 'required|numeric';
+			$rules['graph_height'] = 'required|numeric';
+			$rules['graph_width'] = 'required|numeric';
+			$rules['graph_con_width'] = 'required|numeric';
+			$rules['graph_con_width'] = 'required|numeric';
+			$rules['graph_sin_width'] = 'required|numeric';
+			$rules['graph_sin_height'] = 'required|numeric';
+		}elseif($this->request->get('type_id') == 4)//Si es fotografia
+		{
+			$rules['photo_height'] = 'required|numeric';
+			$rules['photo_width'] = 'required|numeric';
+			$rules['photo_sin_width'] = 'required|numeric';
+			$rules['photo_sin_height'] = 'required|numeric';
+		}elseif($this->request->get('type_id') == 5)//Si es dibujo
+		{
+			$rules['draw_height'] = 'required|numeric';
+			$rules['draw_width'] = 'required|numeric';
+			$rules['draw_sin_width'] = 'required|numeric';
+			$rules['draw_sin_height'] = 'required|numeric';
 		}
 
 		return $rules;

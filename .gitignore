@@ -3,4 +3,5 @@
 .env
 
 /storage/uploads
-/public/files/
+/public/files/*
+/storage/file/*

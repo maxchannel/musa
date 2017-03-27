@@ -182,15 +182,20 @@
                 </button>
                 <a href="{{route('pdf_piece', $piece->id)}}" class="btn btn-default" target="_blank">PDF</a>
             </div>
-            @endif
+            @else
+                <p class="text-muted">Sin Imágenes</p>
+            @endif            
             <!-- Imágen -->
+            <br>
         </div>
 
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">Campos {{$piece->type->name}}</div>
                 <div class="panel-body">
-                    Técnica: <a href="">{{ $piece->techniques->first()->name }}</a>
+                    @if(count($piece->techniques))
+                        Técnica: <a href="">{{ $piece->techniques->first()->name }}</a>
+                    @endif
                     <ul class="list-unstyled">
                     @foreach($piece->areas as $area)
                         <li>{{ $area->type }}: {{ $area->height }} x {{ $area->width }} cm</li>

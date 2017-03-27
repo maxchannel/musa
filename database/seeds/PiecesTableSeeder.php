@@ -38,6 +38,13 @@ class PiecesTableSeeder extends Seeder
         Type::create([
             'name'=> 'Escultura'
         ]);
+        Type::create([
+            'name'=> 'Fotografía'
+        ]);
+        Type::create([
+            'name'=> 'Dibujo'
+        ]);
+
         $technique = Technique::create([
             'name'=> 'Oleo'
         ]);

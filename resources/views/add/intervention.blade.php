@@ -41,6 +41,12 @@
                            {!! Form::text('manager',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Archivo (Multiples Archivos)*</label>
+                        <div class="col-md-6">
+                           {!! Form::file('file[]',['multiple' => 'multiple', 'id' => 'multiple-files']) !!}
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
