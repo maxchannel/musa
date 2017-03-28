@@ -74,7 +74,13 @@
             <a class="btn btn-warning showSingle" target="3">Escultura</a><br><br>
             <a class="btn btn-default showSingle" target="4">Fotografía</a>
             <a class="btn btn-info showSingle" target="5">Dibujo</a>
-            </div>            
+            </div>      
+            <br>
+            <hr>
+            <a class="btn btn-default">
+                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                Subir Imagénes
+            </a>      
 
             <br>
             <div class="panel panel-default targetDiv"  id="div1">

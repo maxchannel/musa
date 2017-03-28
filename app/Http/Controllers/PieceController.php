@@ -233,7 +233,7 @@ class PieceController extends Controller
                     $fileable->save();  
 
                     ///Move file to images/post
-                    $file->move('files/',$newName); 
+                    $file->move(storage_path().'/file/', $newName); 
                 }else 
                 {
                     \Session::flash('image-message', 'Los archivos deben pesar máximo 10Mb');

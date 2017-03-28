@@ -17,6 +17,7 @@ class CreateImagablesTable extends Migration
             
             $table->foreign('image_id')->references('id')->on('images')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
 	}
 

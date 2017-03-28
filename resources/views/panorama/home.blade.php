@@ -11,7 +11,7 @@
                 </br><a href="{{ route('piece_list') }}" class="btn btn-info">Volver</a></br>
                 <br>
                 <div class="panel panel-default targetDiv">
-                    <div class="panel-heading" >Imágenes (<a href="">Ver</a>)</div>
+                    <div class="panel-heading" >Imágenes (<a href="{{ route('piece_panorama_images', $piece->id) }}">Ver</a>)</div>
                     <div class="panel-body">
                         @if(count($piece->images))
                             <img src="{{ asset('images/'.$piece->images->first()->name) }}" class="img-responsive">

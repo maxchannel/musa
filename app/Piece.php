@@ -23,7 +23,7 @@ class Piece extends Model
 
     public function images()
     {
-        return $this->morphToMany('App\Image', 'imagable');
+        return $this->morphToMany('App\Image', 'imagable')->withPivot('id', 'created_at');
     }
     
     public function authors()

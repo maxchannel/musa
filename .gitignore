@@ -4,4 +4,6 @@
 
 /storage/uploads
 /public/files/*
-/storage/file/*
+/storage/file/images/*
+/storage/file/interventions/*
+/storage/file/loans/*
