@@ -103,11 +103,11 @@
                                         @foreach($piece->images as $key => $image)
                                             @if($key == 0)
                                                 <div class="item active">
-                                                    <img src="{{ asset('images/'.$image->name) }}" class="img-responsive" style="width:100%" alt="{{ $piece->title }}">
+                                                    <img src="{{ asset('files/images/'.$image->name) }}" class="img-responsive" style="width:100%" alt="{{ $piece->title }}">
                                                 </div>
                                             @else
                                                 <div class="item">
-                                                    <img src="{{ asset('images/'.$image->name) }}" class="img-responsive" style="width:100%" alt="{{ $piece->title }}">
+                                                    <img src="{{ asset('files/images/'.$image->name) }}" class="img-responsive" style="width:100%" alt="{{ $piece->title }}">
                                                 </div>
                                             @endif
                                         @endforeach
@@ -152,11 +152,11 @@
                         @foreach($piece->images as $key => $image)
                             @if($key == 0)
                                 <div class="item active">
-                                    <img src="{{ asset('images/'.$image->name) }}" class="tales" alt="{{ $piece->title }}">
+                                    <img src="{{ asset('files/images/'.$image->name) }}" class="tales" alt="{{ $piece->title }}">
                                 </div>
                             @else
                                 <div class="item">
-                                    <img src="{{ asset('images/'.$image->name) }}" class="tales" alt="{{ $piece->title }}">
+                                    <img src="{{ asset('files/images/'.$image->name) }}" class="tales" alt="{{ $piece->title }}">
                                 </div>
                             @endif
                         @endforeach

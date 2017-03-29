@@ -61,7 +61,7 @@
                     <td>{{ $piece->year }}</td>
                     <td>
                         @if(count($piece->images))
-                            <img src="{{ asset('images/'.$piece->images->first()->name) }}" style="width:100px">
+                            <img src="{{ asset('files/images/'.$piece->images->first()->name) }}" style="width:100px">
                         @else
                         <span class="text-muted">Sin imágen</span>
                         @endif

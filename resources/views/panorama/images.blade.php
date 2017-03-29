@@ -21,9 +21,9 @@
                     <th></th>
                 </tr>
                     @foreach($piece->images as $i => $image)
-                    <tr data-id="{{ $image->id }}">
+                    <tr data-id="{{ $image->id }}" data-ed="{{ $image->pivot->id }}">
                         <td>
-                            <img src="{{ Storage::url('file/images/'.$image->name) }}" style="width:100px">
+                            <img src="{{ asset('files/images/'.$image->name) }}" style="width:100px">
                         </td>
                         <td>
                             <script>
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-{!! Form::open(['route'=>['piece_image_destroy', ':USER_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
+{!! Form::open(['route'=>['piece_image_destroy', ':USER_ID', ':PIVOT_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 {!! Form::close() !!}
 @endsection
 
@@ -85,8 +85,9 @@ $(document).ready(function(){
         e.preventDefault();
         var row = $(this).parents('tr');
         var id = row.data('id');
+        var ed = row.data('ed');
         var form = $('#form-delete');
-        var url = form.attr('action').replace(':USER_ID',id);
+        var url = form.attr('action').replace(':USER_ID',id).replace(':PIVOT_ID',ed);
         var data = form.serialize();
         row.fadeOut();
         $.post(url, data, function(result){

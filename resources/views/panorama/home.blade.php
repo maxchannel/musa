@@ -8,13 +8,16 @@
     <div class="container" id="main">
         <div class="row">
             <div class="col-md-3">
-                </br><a href="{{ route('piece_list') }}" class="btn btn-info">Volver</a></br>
+                </br>
+                    <a href="{{ route('piece_list') }}" class="btn btn-info">Volver</a>
+                    <a href="{{ route('piece_profile', $piece->id) }}" class="btn btn-success">Detalles</a>
+                </br>
                 <br>
                 <div class="panel panel-default targetDiv">
                     <div class="panel-heading" >Imágenes (<a href="{{ route('piece_panorama_images', $piece->id) }}">Ver</a>)</div>
                     <div class="panel-body">
                         @if(count($piece->images))
-                            <img src="{{ asset('images/'.$piece->images->first()->name) }}" class="img-responsive">
+                            <img src="{{ asset('files/images/'.$piece->images->first()->name) }}" class="img-responsive">
                             <hr>
                         @else
                             <p class="text-muted">Sin Imágenes Aún</p>

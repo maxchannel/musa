@@ -116,15 +116,16 @@ class PanoramaController extends Controller
         $piece = Piece::find($id);
         $this->notFoundUnless($piece);
 
-        return Storage::url('file/images/imagen.png');
-
         return view('panorama.images', compact('piece'));
     }
 
-    public function destroy_piece_image($id)
+    public function destroy_piece_image($id, $pivot_id)
     {
         $image = Image::find($id);
         $image->delete();
+        $able = Imagable::find($pivot_id);
+        $able->delete();
+        //Eliminado fisico
 
         $message = 'Eliminado';
         if($request->ajax())
@@ -174,7 +175,7 @@ class PanoramaController extends Controller
                         $imagable->save(); 
 
                         ///Move file to images/post
-                        $file->move(storage_path().'/file/images/', $newName);
+                        $file->move('files/images/', $newName);
                     }else
                     {
                         return \Redirect::back()->with('image-message', 'Alcanzaste el limite de 12 imágenes por anuncio');

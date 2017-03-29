@@ -34,7 +34,7 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     //Intervention
     Route::get('panorama/images/{id}', ['as' => 'piece_panorama_images', 'uses' => 'PanoramaController@images']);
     Route::put('panorama/images/add/{id}', ['as' => 'add_piece_image', 'uses' => 'PanoramaController@add_piece_image']);
-    Route::delete('panorama/destroy/image/{id}', ['as' => 'piece_image_destroy', 'uses' => 'PanoramaController@destroy_piece_image']);
+    Route::delete('panorama/destroy/image/{id}/{pivot_id}', ['as' => 'piece_image_destroy', 'uses' => 'PanoramaController@destroy_piece_image']);
     // ***Panorama***
 
 

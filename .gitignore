@@ -3,7 +3,6 @@
 .env
 
 /storage/uploads
-/public/files/*
-/storage/file/images/*
-/storage/file/interventions/*
-/storage/file/loans/*
+/public/files/images/*
+/public/files/interventions/*
+/public/files/loans/*
