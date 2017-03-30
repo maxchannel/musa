@@ -225,7 +225,7 @@
                                 -Archivos:
                                 @if(count($piece->interventions->first()->files))
                                     @foreach($piece->interventions->first()->files as $nouu)
-                                        <a href="{{ url('download/'.$nouu->name) }}">{{ $nouu->name }}</a>
+                                        <a href="{{ route('download_start', $nouu->name) }}">{{ $nouu->name }}</a>
                                     @endforeach
                                 @endif
                             </li>
@@ -256,8 +256,8 @@
                                     <li>-Fecha: {{ $inter_gg->year }}</li>
                                     <li>-Proceso: {{ $inter_gg->process }}</li>
                                     <li>
-                                        -Archivos:
                                         @if(count($inter_gg->files))
+                                        -Archivos:
                                             @foreach($inter_gg->files as $nouu)
                                                 <a href="{{ url('download/'.$nouu->name) }}">{{ $nouu->name }}</a>
                                             @endforeach
@@ -290,14 +290,14 @@
                         @endif
                     </ul>
                     <div class="text-center"><!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalMUSA">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLOAN">
                             Ver todo ({{count($piece->loans)}})
                         </button>
                     </div>
                 </div>
             </div>
             <!-- modal -->
-            <div class="modal fade" id="modalMUSA" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="modalLOAN" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -310,6 +310,14 @@
                             @if(count($piece->loans))
                                 @foreach($piece->loans as $loan)
                                     <li>-Institución: {{ $loan->institution->name }}</li>
+                                    <li>
+                                        @if(count($loan->files))
+                                        -Archivos:
+                                            @foreach($loan->files as $nouu)
+                                                <a href="{{ url('download/'.$nouu->name) }}">{{ $nouu->name }}</a>
+                                            @endforeach
+                                        @endif
+                                    </li>
                                     <hr>
                                 @endforeach
                             @endif

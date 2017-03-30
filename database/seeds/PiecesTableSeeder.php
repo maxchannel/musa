@@ -119,7 +119,7 @@ class PiecesTableSeeder extends Seeder
         ]);
 
         $file = File::create([
-            'name'=> 'xgs2.pdf'
+            'name'=> 'base.pdf'
         ]);
 
         $intervention = PieceIntervention::create([
@@ -181,6 +181,12 @@ class PiecesTableSeeder extends Seeder
             'file_id'=> $file->id,
             'fileable_type'=> 'App\PieceConservation',
             'fileable_id'=> $conservation->id
+        ]);
+
+        Fileable::create([
+            'file_id'=> $file->id,
+            'fileable_type'=> 'App\PieceLoan',
+            'fileable_id'=> $loan->id
         ]);
     }
 }

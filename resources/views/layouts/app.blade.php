@@ -50,8 +50,9 @@
                                 <li><a href="{{ route('add_author') }}"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Autor</a></li>
                                 <li><a href="{{ route('add_exhibition') }}"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Exhibición</a></li>
                                 <li><a href="{{ route('add_asoc_exhibition') }}"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Asociar Exhibición</a></li>
-                                <li><a href="{{ route('add_publication') }}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Publicación</a></li>
+                                <li><a href="{{ route('add_publication') }}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Publicación</a></li>
                                 <li><a href="{{ route('add_asoc_publication') }}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Asociar Publicación</a></li>
+                                <li><a href="{{ route('add_conservation') }}"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Asociar Conservación</a></li>
                                 <li><a href="{{ route('add_institution') }}"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Institución</a></li>
                                 <li><a href="{{ route('add_loan') }}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> Préstamo</a></li>
                                 <li><a href="{{ route('add_intervention') }}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Intervención</a></li>

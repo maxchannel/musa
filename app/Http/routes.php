@@ -49,6 +49,9 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     Route::get('/add/intervention', ['as' => 'add_intervention', 'uses' => 'InterventionController@create']);
     Route::post('/add/intervention', ['as' => 'add_intervention_store', 'uses' => 'InterventionController@store']);
 
+    //Conservation
+    Route::get('/add/conservation', ['as' => 'add_conservation', 'uses' => 'ConservationController@index']);
+
     //Institution
     Route::get('/add/institution', ['as' => 'add_institution', 'uses' => 'InstitutionController@create']);
     Route::post('/add/institution', ['as' => 'add_institution_store', 'uses' => 'InstitutionController@store']);
@@ -108,23 +111,8 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
     Route::get('/pdf/piece/{id}', ['as' => 'pdf_piece', 'uses' => 'PDFController@index']);
 });
 
-
-
 // Download Route
-Route::get('download/{filename}', function($filename)
-{
-    // Check if file exists in app/storage/file folder
-    $file_path = storage_path().'/file/'.$filename;
-    if (file_exists($file_path))
-    {
-        // Send Download
-        return Response::download($file_path, $filename, [
-            'Content-Length: '. filesize($file_path)
-        ]);
-    }
-    else
-    {
-        // Error
-        exit('Requested file does not exist on our server!');
-    }
-})->where('filename', '[A-Za-z0-9\-\_\.]+');
+Route::get('download/{filename}', ['as' => 'download_start', 'uses' => 'DownloadController@start']);
+
+
+
