@@ -16,7 +16,7 @@
                 @endif
                 @include('partials.errorMessages')
 
-                {!! Form::open(['route'=>'add_intervention_store', 'method'=>'POST', 'role'=>'form', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
+                {!! Form::open(['route'=>'add_conservation_store', 'method'=>'POST', 'role'=>'form', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group">
                         <label class="col-md-4 control-label">Pieza*</label>
                         <div class="col-md-6">

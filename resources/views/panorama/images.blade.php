@@ -30,10 +30,6 @@
                             moment.locale("es");
                             document.writeln(moment.utc("{{ $image->created_at }}", "YYYYMMDD hh:mm:ss").fromNow());
                             </script>
-                            <br>
-                            {{ $image->id }}
-                            <br>
-                            {{ $image->pivot->id }}
                         </td>
                         <td>
                             <a href="" class="btn btn-danger btn-xs btn-delete">Eliminar</a>

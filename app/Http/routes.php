@@ -51,6 +51,7 @@ Route::group(['prefix' => 'i', 'middleware' => ['auth']], function () {
 
     //Conservation
     Route::get('/add/conservation', ['as' => 'add_conservation', 'uses' => 'ConservationController@index']);
+    Route::post('/add/conservation', ['as' => 'add_conservation_store', 'uses' => 'ConservationController@store']);
 
     //Institution
     Route::get('/add/institution', ['as' => 'add_institution', 'uses' => 'InstitutionController@create']);

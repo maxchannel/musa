@@ -8,6 +8,8 @@ use App\Type;
 use App\Author;
 use App\File;
 use App\Fileable;
+use App\Image;
+use App\Imagable;
 use App\Technique;
 use App\PieceMounting;
 use App\PieceLoan;
@@ -185,6 +187,45 @@ class PieceController extends Controller
 		    $montaje->save();
     		
 		}
+
+		//Image
+        $files = \Input::file('file');
+        if(!empty($files[0]))//Solo si se manda 1 imagen
+        {
+            foreach($files as $file) 
+            {
+                // Validate files from input file
+                $rules = ['file' => 'mimes:jpeg,bmp,png|max:12000'];
+                $validation = \Validator::make(['file'=> $file], $rules);    
+
+                if(!$validation->fails()) 
+                {
+                    //Limitando el numero de imagenes
+                    if($piece->images()->count() < 15)
+                    {   
+                        //Rename file
+                        $extension = $file->getClientOriginalExtension(); 
+                        $newName = str_random(15).".".$extension;    
+                        $path = storage_path().'/uploads/'.$newName;
+
+                        //Image
+                        $image = new Image;
+                        $image->name = $newName;
+                        $image->save(); 
+                        //Imagable
+                        $imagable = new Imagable;
+                        $imagable->imagable_type = 'App\Piece';
+                        $imagable->image_id = $image->id;
+                        $imagable->imagable_id = $piece->id;
+                        $imagable->save(); 
+
+                        ///Move file to images/post
+                        $file->move('files/images/', $newName);
+                    }
+                }
+            }
+        }
+        //Image
 
 		
 		return \Redirect::back()->with('message', 'Guardado con éxito');

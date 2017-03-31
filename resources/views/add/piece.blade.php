@@ -77,10 +77,24 @@
             </div>      
             <br>
             <hr>
-            <a class="btn btn-default">
-                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                Subir Imagénes
-            </a>      
+            <div class="panel panel-default">
+                <div class="panel-heading" >Añadir Imágen</div>
+                <div class="panel-body">
+                    <!-- images -->
+                    <p class="text-muted">Puedes subir multiples imágenes al Pedido</p>
+                    @if(Session::has('image-message'))
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ Session::get('image-message') }}
+                        </div>
+                    @endif
+                    
+                    {!! Form::file('file[]',['multiple' => 'multiple', 'id' => 'multiple-files', 'accept' => 'image/*']) !!}
+                    <br>  
+                    <!-- images -->
+                </div>
+            </div>
+            <hr> 
 
             <br>
             <div class="panel panel-default targetDiv"  id="div1">

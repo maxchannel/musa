@@ -139,6 +139,7 @@ return [
         'draw_sin_height'=>'Altura sin Marco Dibujo',
 
         'price' => 'Precio',
+        'state' => 'Estado'
     ],
 
 ];
