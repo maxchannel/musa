@@ -180,12 +180,94 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                     Ampliar
                 </button>
-                <a href="{{route('pdf_piece', $piece->id)}}" class="btn btn-default" target="_blank">PDF</a>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalPDF">
+                    PDF
+                </button>
             </div>
             @else
                 <p class="text-muted">Sin Imágenes</p>
             @endif            
             <!-- Imágen -->
+
+            <!-- elegir el pdf -->
+            <div class="modal fade" id="modalPDF" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Exportar PDF</h4>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-unstyled">
+                            <!-- tabulando -->
+                            {!! Form::open(['route'=>['pdf_preludio', $piece->id], 'method'=>'GET', 'role'=>'form', 'class' => 'form-horizontal', 'target'=>'_blank']) !!}
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('basic', 'yes') !!} Ficha Técnica
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('images', 'yes') !!} Imágenes
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('montaje', 'yes') !!} Montaje
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('adqui', 'yes') !!} Adquisición
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('pub', 'yes') !!} Publicaciones
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('loan', 'yes') !!} Préstamos
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('inter', 'yes') !!} Intervenciones
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('conser', 'yes') !!} Conservaciones
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('exhi', 'yes') !!} Exhibiciones
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox"> Avalúo
+                                </label>
+                              </div>
+                              <div class="checkbox">
+                                <label>
+                                  <input type="checkbox"> Ubicación 
+                                </label>
+                              </div>
+                              <br>
+                              <button type="submit" class="btn btn-default">Exportar</button>
+                            {!! Form::close() !!}
+                            <!-- tabulando -->
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- elegir el pdf -->
             <br>
         </div>
 

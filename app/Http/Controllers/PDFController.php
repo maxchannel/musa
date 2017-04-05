@@ -7,14 +7,24 @@ use Illuminate\Http\Request;
 
 class PDFController extends Controller 
 {
-
-	public function index($id)
+	public function before($id)
 	{
 		$piece = Piece::find($id);
+		//Aderidos
+		$basic = \Request::input('basic');
+		$montaje = \Request::input('montaje');
+		$adqui = \Request::input('adqui');
+		$pub = \Request::input('pub');
+		$images = \Request::input('images');
+		$loan = \Request::input('loan');
+		$inter = \Request::input('inter');
+		$exhi = \Request::input('exhi');
+		$conser = \Request::input('conser');
 
-		$pdf = \PDF::loadView('pdf.piece', ['modo'=>1,'piece'=>$piece])->setPaper('letter', 'portrait');
+		$pdf = \PDF::loadView('pdf.piece', ['modo'=>1,'piece'=>$piece, 'montaje'=>$montaje, 
+			'pub'=>$pub, 'adqui'=>$adqui, 'images'=>$images, 'loan'=>$loan, 'inter'=>$inter, 
+			'exhi'=>$exhi, 'conser'=>$conser])->setPaper('letter', 'portrait');
         return $pdf->stream();
 	}
-
 
 }
