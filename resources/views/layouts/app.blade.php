@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +9,7 @@
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- Styles -->
     {!! Html::style('assets/bootstrap/css/bootstrap.min.css') !!}
     {!! Html::style('assets/css/style.css') !!}
@@ -117,7 +117,6 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     @yield('script_footer')
 </body>

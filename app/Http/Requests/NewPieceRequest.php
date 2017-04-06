@@ -27,7 +27,7 @@ class NewPieceRequest extends Request
 			$rules['sin_height'] = 'required|numeric';
 		}elseif($this->request->get('type_id') == 2)//Si es gráfica
 		{
-			$rules['technique_graph_id'] = 'required|numeric';
+			$rules['tecnica1'] = 'required';
 			$rules['graph_height'] = 'required|numeric';
 			$rules['graph_width'] = 'required|numeric';
 			$rules['graph_con_width'] = 'required|numeric';

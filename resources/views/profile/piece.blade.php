@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
+            </br>
+                <a href="{{ route('piece_list') }}" class="btn btn-info">Volver</a>
+                <a href="{{ route('piece_panorama', $piece->id) }}" class="btn btn-success">Panorama</a>
+            </br></br>
             <div class="panel panel-default">
                 <div class="panel-heading">Ficha Técnica</div>
                 <div class="panel-body">
@@ -248,7 +252,7 @@
                               </div>
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox"> Avalúo
+                                  {!! Form::checkbox('ava', 'yes') !!} Avalúo
                                 </label>
                               </div>
                               <div class="checkbox">

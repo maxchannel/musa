@@ -46,7 +46,16 @@ class PiecesTableSeeder extends Seeder
         ]);
 
         $technique = Technique::create([
-            'name'=> 'Oleo'
+            'name'=> 'Oleo',
+            'tipo'=> 'Pintura'
+        ]);
+        $technique2 = Technique::create([
+            'name'=> 'Oleo',
+            'tipo'=> 'Gráfica'
+        ]);
+        $technique3 = Technique::create([
+            'name'=> 'Neu',
+            'tipo'=> 'Dibujo'
         ]);
         $author = Author::create([
             'name' => 'Picasso'

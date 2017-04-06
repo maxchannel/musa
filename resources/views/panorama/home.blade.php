@@ -10,7 +10,7 @@
             <div class="col-md-3">
                 </br>
                     <a href="{{ route('piece_list') }}" class="btn btn-info">Volver</a>
-                    <a href="{{ route('piece_profile', $piece->id) }}" class="btn btn-success">Detalles</a>
+                    <a href="{{ route('piece_profile', $piece->id) }}" class="btn btn-primary">Detalles</a>
                 </br>
                 <br>
                 <div class="panel panel-default targetDiv">

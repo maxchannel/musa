@@ -11,7 +11,7 @@
             <tbody>
                 <tr>
                     <td width="50%">
-                        @if($montaje == "yes")
+                        @if($basic == "yes")
                         <h4>Básico</h4>
                         <strong>Tipo de pieza:</strong> {{ $piece->type->name }}<br>
                         <strong>Autor:</strong> {{$piece->authors->first()->name}}<br>

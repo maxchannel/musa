@@ -66,10 +66,12 @@ class PieceController extends Controller
 	public function create()
 	{
 		$types = Type::orderBy('id', 'ASC')->lists('name', 'id');
-		$techs = Technique::orderBy('name', 'ASC')->lists('name', 'id');
+		$techs = Technique::where('tipo','Pintura')->orderBy('name', 'ASC')->lists('name', 'id');
+		$tec_grafs = Technique::where('tipo','Gráfica')->orderBy('name', 'ASC')->lists('name', 'id');
+		$tec_draws = Technique::where('tipo','Dibujo')->orderBy('name', 'ASC')->lists('name', 'id');
 		$authors = Author::orderBy('name', 'ASC')->lists('name', 'id');
 
-		return view('add.piece', compact('types', 'techs', 'authors'));
+		return view('add.piece', compact('types', 'techs', 'authors', 'tec_grafs', 'tec_draws'));
 	}
 
 	public function store(NewPieceRequest $request)
@@ -95,6 +97,12 @@ class PieceController extends Controller
 
 		if($request->input('type_id') == 1)//Pintura
 		{
+			//Sino existe la tecnica se guarda
+			foreach($request->input('tecnica1') as $tech)
+			{
+				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
+			}
+
 			//Marco
 			$montaje = new PieceArea;
 		    $montaje->piece_id = $piece->id;
@@ -116,8 +124,14 @@ class PieceController extends Controller
     		$author->technique_id = $request->input('technique_id');
     		$author->save();
     		
-		}elseif($request->input('type_id') == 2)//Gráfico
+		}elseif($request->input('type_id') == 2)//Gráfica
 		{
+			//Sino existe la tecnica se guarda
+			foreach($request->input('tecnica1') as $tech)
+			{
+				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Gráfica']);
+			}
+
 			//Padding
 			$montaje = new PieceArea;
 		    $montaje->piece_id = $piece->id;
@@ -170,6 +184,12 @@ class PieceController extends Controller
     		
 		}elseif($request->input('type_id') == 5)//Dibujo
 		{
+			//Sino existe la tecnica se guarda
+			foreach($request->input('tecnica1') as $tech)
+			{
+				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Dibujo']);
+			}
+
 			//Marco
 			$montaje = new PieceArea;
 		    $montaje->piece_id = $piece->id;

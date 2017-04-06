@@ -139,7 +139,8 @@ return [
         'draw_sin_height'=>'Altura sin Marco Dibujo',
 
         'price' => 'Precio',
-        'state' => 'Estado'
+        'state' => 'Estado', 
+        'tecnica1' => 'Técnica de Gráfica'
     ],
 
 ];
