@@ -85,6 +85,33 @@
                                 @endforeach
                             @endif
                         @endif
+
+                        @if($ubi == "yes")
+                            <h4>Ubicación</h4>
+                            @if(count($piece->vaults))
+                                @foreach($piece->vaults as $key => $vault)
+                                    <strong>Rack:</strong> {{$vault->rack}}<br>
+                                @endforeach
+                            @endif
+                        @endif
+
+                        @if($ava == "yes")
+                            <h4>Avalúos</h4>
+                            @if(count($piece->valuations))
+                                @foreach($piece->valuations as $key => $valuation)
+                                    <strong>Avalúo:</strong> {{$valuation->valuation}} ({{$valuation->currency}})<br>
+                                @endforeach
+                            @endif
+                        @endif
+
+                        @if($montaje == "yes")
+                            <h4>Montaje ({{$piece->type->name}})</h4>
+                            @if(count($piece->areas))
+                                @foreach($piece->areas as $key => $area)
+                                    <strong>{{ $area->type }}:</strong> {{ $area->height }} x {{ $area->width }} cm<br>
+                                @endforeach
+                            @endif
+                        @endif
                     </td>
                 </tr>
                 <tr>

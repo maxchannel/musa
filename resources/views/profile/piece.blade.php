@@ -252,12 +252,12 @@
                               </div>
                               <div class="checkbox">
                                 <label>
-                                  {!! Form::checkbox('ava', 'yes') !!} Avalúo
+                                  {!! Form::checkbox('ava', 'yes') !!} Avalúos
                                 </label>
                               </div>
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox"> Ubicación 
+                                  {!! Form::checkbox('ubi', 'yes') !!} Ubicación
                                 </label>
                               </div>
                               <br>
@@ -287,14 +287,6 @@
                         <li>{{ $area->type }}: {{ $area->height }} x {{ $area->width }} cm</li>
                     @endforeach
                     </ul>
-
-                    @if(count($piece->mounting))
-                    <ul class="list-unstyled">
-                        <li>-Dimensiones: {{ $piece->mounting->dimentions }}</li>
-                        <li>-Dimensiones sin:{{ $piece->mounting->dimentions_without }}</li>
-                        <li>-Padding: {{ $piece->mounting->dimentions_with }}</li>
-                    </ul>
-                    @endif
                 </div>
             </div>
 

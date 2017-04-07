@@ -17,7 +17,7 @@
                 <div class="panel-heading">Feed</div>
                 <div class="panel-body">
                     <hr>
-                    <a href="">Juan</a> añadio una pintura nueva - hace 7 horas
+                    <a href="">Max</a> añadio una pintura nueva - hace 7 horas
                     <hr>
                 </div>
             </div>

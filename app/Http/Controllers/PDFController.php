@@ -21,10 +21,11 @@ class PDFController extends Controller
 		$exhi = \Request::input('exhi');
 		$conser = \Request::input('conser');
 		$ava = \Request::input('ava');
+		$ubi = \Request::input('ubi');
 
 		$pdf = \PDF::loadView('pdf.piece', ['modo'=>1,'piece'=>$piece, 'montaje'=>$montaje, 
 			'pub'=>$pub, 'adqui'=>$adqui, 'images'=>$images, 'loan'=>$loan, 'inter'=>$inter, 
-			'exhi'=>$exhi, 'conser'=>$conser, 'basic'=>$basic, 'ava'=>$ava])->setPaper('letter', 'portrait');
+			'exhi'=>$exhi, 'conser'=>$conser, 'basic'=>$basic, 'ava'=>$ava, 'ubi'=>$ubi])->setPaper('letter', 'portrait');
         return $pdf->stream();
 	}
 

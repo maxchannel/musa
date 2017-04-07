@@ -17,6 +17,7 @@ use App\PieceArea;
 use App\PieceCube;
 use App\PieceAcquisition;
 use App\PieceTechnique;
+use App\PieceValuation;
 use App\Intervention;
 use App\Institution;
 use App\PieceAuthor;

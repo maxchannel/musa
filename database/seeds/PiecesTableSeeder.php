@@ -15,6 +15,7 @@ use App\Author;
 use App\PieceAuthor;
 use App\PieceTechnique;
 use App\PieceAcquisition;
+use App\PieceValuation;
 use App\File;
 use App\PieceIntervention;
 use App\PieceConservation;
@@ -153,6 +154,11 @@ class PiecesTableSeeder extends Seeder
 
         $vault = PieceVault::create([
             'rack'=> '8B',
+            'piece_id'=>$piece->id
+        ]);
+        PieceValuation::create([
+            'valuation'=> '4000',
+            'currency'=> $faker->randomElement(['MXN','USD']),
             'piece_id'=>$piece->id
         ]);
         $publi = Publication::create([

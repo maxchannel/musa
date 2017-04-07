@@ -61,6 +61,11 @@ class Piece extends Model
         return $this->hasMany('App\PieceVault');
     }
 
+    public function valuations()
+    {
+        return $this->hasMany('App\PieceValuation');
+    }
+
     public function exhibitions()
     {
         return $this->belongsToMany('App\Exhibition', 'piece_exhibitions','piece_id', 'exhibition_id')->withPivot('id','deleted_at');
