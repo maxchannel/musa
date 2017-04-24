@@ -140,7 +140,8 @@ return [
 
         'price' => 'Precio',
         'state' => 'Estado', 
-        'tecnica1' => 'Técnica de Gráfica'
+        'tecnica1' => 'Técnica de Gráfica',
+        'author_id' => 'Autor'
     ],
 
 ];

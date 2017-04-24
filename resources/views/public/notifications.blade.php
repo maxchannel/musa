@@ -10,19 +10,19 @@
         <div class="col-md-8 col-md-offset-2">
             <table class="table table-hover">
                 <tr>
-                    <th>Fecha</th>
                     <th></th>
+                    <th>Fecha</th>
                     <th></th>
                 </tr>
                 @foreach($nots as $n)
                 <tr data-id="{{ $n->id }}">
+                    <td>{!! $n->m !!}</td>
                     <td>
                         <script>
                         moment.locale("es");
                         document.writeln(moment.utc("{{ $n->created_at }}", "YYYYMMDD hh:mm:ss").fromNow());
                         </script>
                     </td>
-                    <td>{!! $n->m !!}</td>
                     <td> 
                         <a href="#" class="btn-delete">Eliminar</a>
                     </td>

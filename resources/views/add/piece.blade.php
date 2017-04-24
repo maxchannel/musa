@@ -82,7 +82,8 @@
             </div>      
             <br>
             <hr>
-            <div class="panel panel-default">
+            <a class="btn btn-info" id="showUploadImage" >Subir Imágen</a><br><br>
+            <div class="panel panel-default" id="boxUploadImage">
                 <div class="panel-heading" >Añadir Imágen</div>
                 <div class="panel-body">
                     <!-- images -->
@@ -311,6 +312,8 @@ $('#div2').hide();
 $('#div3').hide();
 $('#div4').hide();
 $('#div5').hide();
+$('#div5').hide();
+$('#boxUploadImage').hide();
 jQuery(function(){
     jQuery('#showall').click(function(){
         jQuery('.targetDiv').show();
@@ -319,6 +322,10 @@ jQuery(function(){
         jQuery('.targetDiv').hide();
         jQuery('#div'+$(this).attr('target')).show();
     });
+});
+
+$("#showUploadImage").click(function(){
+    $("#boxUploadImage").toggle();
 });
 
 $('#tags').select2({

@@ -247,7 +247,6 @@ class PieceController extends Controller
             }
         }
         //Image
-
 		
 		return \Redirect::back()->with('message', 'Guardado con éxito');
 	}

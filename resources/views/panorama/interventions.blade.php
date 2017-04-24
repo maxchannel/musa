@@ -10,7 +10,7 @@
         <div class="col-md-1">
             <a href="{{ route('piece_panorama', $piece->id) }}" class="btn btn-info">Volver</a>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-7">
             <h1 class="text-center">Editar Intervenciones</h1>
             @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissable">
@@ -46,7 +46,53 @@
                 <p class="text-muted">Sin Publicaciones Aún</p>
             @endif
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" >Añadir Intervención</div>
+                <div class="panel-body">
+                    {!! Form::open(['route'=>'add_intervention_store', 'method'=>'POST', 'role'=>'form', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Pieza*</label>
+                            <div class="col-md-6">
+                               {!! Form::select('piece_id',[''=>'Seleccionar']+$pieces,null,['class'=>'form-control']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Proceso*</label>
+                            <div class="col-md-6">
+                               {!! Form::text('process',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Año*</label>
+                            <div class="col-md-6">
+                               {!! Form::text('year',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Manager*</label>
+                            <div class="col-md-6">
+                               {!! Form::text('manager',null,['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Archivo (Multiples Archivos)*</label>
+                            <div class="col-md-6">
+                               {!! Form::file('file[]',['multiple' => 'multiple', 'id' => 'multiple-files']) !!}
+                            </div>
+                        </div>    
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

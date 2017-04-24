@@ -157,7 +157,7 @@ class PiecesTableSeeder extends Seeder
             'piece_id'=>$piece->id
         ]);
         PieceValuation::create([
-            'valuation'=> '4000',
+            'valuation'=> $faker->randomElement(['2435','6263','8327']),
             'currency'=> $faker->randomElement(['MXN','USD']),
             'piece_id'=>$piece->id
         ]);

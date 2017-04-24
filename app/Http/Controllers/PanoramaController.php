@@ -7,8 +7,11 @@ use App\PiecePublication;
 use App\PieceExhibition;
 use App\PieceIntervention;
 use App\PieceLoan;
+use App\Publication;
 use App\Image;
 use App\Imagable;
+use App\Exhibition;
+use App\Institution;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewImagePanoramaRequest;
@@ -19,8 +22,10 @@ class PanoramaController extends Controller
 	{
 		$piece = Piece::find($id);
 		$this->notFoundUnless($piece);
+        $publications = Publication::orderBy('title', 'ASC')->lists('title', 'id');
+        $pieces = Piece::orderBy('title', 'ASC')->lists('title', 'id');
 
-        return view('panorama.publications', compact('piece'));
+        return view('panorama.publications', compact('piece', 'publications', 'pieces'));
     }
 
     public function destroy_piece_publication($id)
@@ -43,8 +48,10 @@ class PanoramaController extends Controller
     {
         $piece = Piece::find($id);
         $this->notFoundUnless($piece);
+        $exhibitions = Exhibition::orderBy('title', 'ASC')->lists('title', 'id');
+        $pieces = Piece::orderBy('title', 'ASC')->lists('title', 'id');
 
-        return view('panorama.exhibitions', compact('piece'));
+        return view('panorama.exhibitions', compact('piece', 'exhibitions', 'pieces'));
     }
 
     public function destroy_piece_exhibition($id)
@@ -67,8 +74,10 @@ class PanoramaController extends Controller
     {
         $piece = Piece::find($id);
         $this->notFoundUnless($piece);
+        $insts = Institution::orderBy('name', 'ASC')->lists('name', 'id');
+        $pieces = Piece::orderBy('title', 'ASC')->lists('title', 'id');
 
-        return view('panorama.loans', compact('piece'));
+        return view('panorama.loans', compact('piece', 'insts', 'pieces'));
     }
 
     public function destroy_piece_loan($id)
@@ -91,8 +100,9 @@ class PanoramaController extends Controller
     {
         $piece = Piece::find($id);
         $this->notFoundUnless($piece);
+        $pieces = Piece::orderBy('title', 'ASC')->lists('title', 'id');
 
-        return view('panorama.interventions', compact('piece'));
+        return view('panorama.interventions', compact('piece', 'pieces'));
     }
 
     public function destroy_piece_intervention($id)
