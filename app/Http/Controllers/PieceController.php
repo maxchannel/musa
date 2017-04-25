@@ -21,6 +21,7 @@ use App\PieceValuation;
 use App\Intervention;
 use App\Institution;
 use App\PieceAuthor;
+use App\PieceSignature;
 use App\Http\Requests\NewPieceRequest;
 use App\Http\Requests\EditPieceRequest;
 use App\Http\Requests\NewLoanRequest;
@@ -70,9 +71,10 @@ class PieceController extends Controller
 		$techs = Technique::where('tipo','Pintura')->orderBy('name', 'ASC')->lists('name', 'id');
 		$tec_grafs = Technique::where('tipo','Gráfica')->orderBy('name', 'ASC')->lists('name', 'id');
 		$tec_draws = Technique::where('tipo','Dibujo')->orderBy('name', 'ASC')->lists('name', 'id');
+		$tec_paints = Technique::where('tipo','Pintura')->orderBy('name', 'ASC')->lists('name', 'id');
 		$authors = Author::orderBy('name', 'ASC')->lists('name', 'id');
 
-		return view('add.piece', compact('types', 'techs', 'authors', 'tec_grafs', 'tec_draws'));
+		return view('add.piece', compact('types', 'techs', 'authors', 'tec_grafs', 'tec_draws', 'tec_paints'));
 	}
 
 	public function store(NewPieceRequest $request)
@@ -98,11 +100,21 @@ class PieceController extends Controller
 
 		if($request->input('type_id') == 1)//Pintura
 		{
-			//Sino existe la tecnica se guarda
-			foreach($request->input('tecnica1') as $tech)
+			//Sino existe la tecnica se guarda y se asocia
+			$techs_news = array();
+			foreach($request->input('paint_tech_id') as $tech)
 			{
-				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
+				$xyz = Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
+				$techs_news[] = $xyz->id; 
 			}
+		    foreach($techs_news as $_new)
+		    {
+		    	$author = new PieceTechnique;
+        		$author->piece_id = $piece->id;
+        		$author->technique_id = $_new;
+        		$author->save();
+		    }
+		    //Sino existe la tecnica se guarda y se asocia
 
 			//Marco
 			$montaje = new PieceArea;
@@ -120,10 +132,14 @@ class PieceController extends Controller
 		    $montaje->height = $request->input('sin_height');
 		    $montaje->save();
 
-		    $author = new PieceTechnique;
-    		$author->piece_id = $piece->id;
-    		$author->technique_id = $request->input('technique_id');
-    		$author->save();
+    		//Si tienes firma
+    		if($request->input('paint_sign') != "")
+    		{
+        		$sign = new PieceSignature;
+        		$sign->piece_id = $piece->id;
+        		$sign->firm = $request->input('paint_sign');
+        		$sign->save();
+    	    }
     		
 		}elseif($request->input('type_id') == 2)//Gráfica
 		{

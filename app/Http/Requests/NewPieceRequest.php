@@ -21,7 +21,6 @@ class NewPieceRequest extends Request
 
 		if($this->request->get('type_id') == 1)//Si es pintura
 		{
-			$rules['technique_id'] = 'required|numeric';
 			$rules['marco_width'] = 'required|numeric';
 			$rules['marco_height'] = 'required|numeric';
 			$rules['sin_width'] = 'required|numeric';
