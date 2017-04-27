@@ -25,9 +25,12 @@ class NewPieceRequest extends Request
 			$rules['marco_height'] = 'required|numeric';
 			$rules['sin_width'] = 'required|numeric';
 			$rules['sin_height'] = 'required|numeric';
+			//Nuevas
+			$rules['sign_paint'] = 'required';
 		}elseif($this->request->get('type_id') == 2)//Si es gráfica
 		{
-			$rules['tecnica1'] = 'required';
+			$rules['graph_tech'] = 'required';
+			$rules['graph_sign'] = 'required';
 			$rules['graph_height'] = 'required|numeric';
 			$rules['graph_width'] = 'required|numeric';
 			$rules['graph_con_width'] = 'required|numeric';

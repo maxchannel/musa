@@ -15,6 +15,7 @@ use App\PieceMounting;
 use App\PieceLoan;
 use App\PieceArea;
 use App\PieceCube;
+use App\PieceTiraje;
 use App\PieceAcquisition;
 use App\PieceTechnique;
 use App\PieceValuation;
@@ -148,6 +149,15 @@ class PieceController extends Controller
 			{
 				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Gráfica']);
 			}
+
+			//Si tiene un tiraje
+    		if($request->input('graph_tiraje') != "")
+    		{
+        		$sign = new PieceTiraje;
+        		$sign->piece_id = $piece->id;
+        		$sign->contenido = $request->input('graph_tiraje');
+        		$sign->save();
+    	    }
 
 			//Padding
 			$montaje = new PieceArea;

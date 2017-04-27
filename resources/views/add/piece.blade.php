@@ -118,7 +118,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Firma*</label>
                         <div class="col-md-6">
-                           {!! Form::select('paint_sign',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
+                           {!! Form::select('sign_paint',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
                     <hr>
@@ -158,17 +158,25 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Técnica*</label>
                         <div class="col-md-6">
-                           {!! Form::select('technique_id',[''=>'Seleccionar']+$techs,null,['class'=>'form-control']) !!}
+                           {!! Form::select('graph_tech',[''=>'Seleccionar']+$techs,null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Firma*</label>
                         <div class="col-md-6">
-                           {!! Form::select('sign_',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
+                           {!! Form::select('graph_sign',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
 
                     <hr>
+                    <h4 class="text-center">Tiraje</h4>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Contenido</label>
+                        <div class="col-md-6">
+                           {!! Form::text('graph_tiraje',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                        </div>
+                    </div><br><br>
+
                     <h4 class="text-center">Medidas</h4>
                     <p class="text-success">Area de Impresión</p>
                     <div class="form-group">
@@ -281,7 +289,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Firma*</label>
                         <div class="col-md-6">
-                           {!! Form::select('sign_',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
+                           {!! Form::select('sign_photo',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
                     <h4 class="text-center">Medidas</h4>
