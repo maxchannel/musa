@@ -158,7 +158,11 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Técnica*</label>
                         <div class="col-md-6">
-                           {!! Form::select('graph_tech',[''=>'Seleccionar']+$techs,null,['class'=>'form-control']) !!}
+                            <select name="paint_tech_id[]" id="tags3" multiple="multiple" style="width:100%" >
+                                @foreach($tec_grafs as $tech)
+                                    <option>{{ $tech }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div><br><br>
                     <div class="form-group">
@@ -249,7 +253,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Tiene Base?</label>
                         <div class="col-md-6">
-                           {!! Form::checkbox('instalation', 'yes', false) !!}
+                           {!! Form::checkbox('instalation_base', 'yes', false) !!}
                         </div>
                     </div> 
                     <br>
@@ -264,19 +268,19 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('cube_base_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('cube_base_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Alto*</label>
                         <div class="col-md-6">
-                           {!! Form::text('cube_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
+                           {!! Form::text('cube_base_long',null,['class'=>'form-control', 'placeholder'=>'Alto']) !!}
                         </div>
                     </div> 
                     <br><br>
@@ -289,21 +293,21 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Firma*</label>
                         <div class="col-md-6">
-                           {!! Form::select('sign_photo',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
+                           {!! Form::select('photo_sign',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
                     <h4 class="text-center">Medidas</h4>
-                    <p class="text-success">Area de Impresión</p>
+                    <p class="text-success">sin Marco</p>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Ancho*</label>
                         <div class="col-md-6">
-                           {!! Form::text('graph_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
+                           {!! Form::text('photo_sin_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
                         </div>
                     </div><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Largo*</label>
                         <div class="col-md-6">
-                           {!! Form::text('graph_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
+                           {!! Form::text('photo_sin_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
                     </div><br>
                     <p class="text-danger">Marco</p>
@@ -318,19 +322,6 @@
                         <div class="col-md-6">
                            {!! Form::text('photo_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
                         </div>
-                    </div><br>
-                    <p class="text-primary">Soporte</p>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Ancho*</label>
-                        <div class="col-md-6">
-                           {!! Form::text('photo_sin_width',null,['class'=>'form-control', 'placeholder'=>'Ancho']) !!}
-                        </div>
-                    </div><br><br>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Largo*</label>
-                        <div class="col-md-6">
-                           {!! Form::text('photo_sin_height',null,['class'=>'form-control', 'placeholder'=>'Largo']) !!}
-                        </div>
                     </div><br><br><br>
                 </div>
             </div>
@@ -338,16 +329,18 @@
              <div class="panel panel-default targetDiv" id="div5">
                 <div class="panel-heading">Campos Dibujo</div>
                 <div class="panel-body">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Técnica*</label>
-                        <div class="col-md-6">
-                           {!! Form::select('technique_id',[''=>'Seleccionar']+$techs,null,['class'=>'form-control']) !!}
-                        </div>
-                    </div><br><br>
+                    <div class="col-md-12">
+                        <label>Técnica</label>
+                        <select name="draw_tech_id[]" id="tagsDraw" multiple="multiple" style="width:100%" >
+                            @foreach($tec_draws as $tech)
+                                <option>{{ $tech }}</option>
+                            @endforeach
+                        </select>
+                    </div><br><br><br><br>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Firma*</label>
                         <div class="col-md-6">
-                           {!! Form::select('sign_',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
+                           {!! Form::select('draw_sign',[''=>'Seleccionar','Superior Derecha'=>'Superior Derecha'],null,['class'=>'form-control']) !!}
                         </div>
                     </div><br><br>
 
@@ -418,6 +411,16 @@ $('#tags').select2({
 });
 
 $('#tags2').select2({
+    tags: true,
+    tokenSeparators: [','], 
+    placeholder: "Añade tus categorías"
+});
+$('#tags3').select2({
+    tags: true,
+    tokenSeparators: [','], 
+    placeholder: "Añade tus categorías"
+});
+$('#tagsDraw').select2({
     tags: true,
     tokenSeparators: [','], 
     placeholder: "Añade tus categorías"

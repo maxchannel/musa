@@ -29,7 +29,6 @@ class NewPieceRequest extends Request
 			$rules['sign_paint'] = 'required';
 		}elseif($this->request->get('type_id') == 2)//Si es gráfica
 		{
-			$rules['graph_tech'] = 'required';
 			$rules['graph_sign'] = 'required';
 			$rules['graph_height'] = 'required|numeric';
 			$rules['graph_width'] = 'required|numeric';

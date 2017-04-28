@@ -53,16 +53,14 @@ class InterventionController extends Controller
                     $file->move('files/files/', $newName); 
                 }else 
                 {
-                    \Session::flash('image-message', 'Los archivos deben pesar máximo 10Mb');
+                    \Session::flash('message', 'Los archivos deben pesar máximo 10Mb');
                 }
             }
         }else
         {
-            return \Redirect::back()->with('image-message', 'Debes seleccionar al menos 1 imágen');
+            return \Redirect::back()->with('message', 'Se guardo sin Archivos');
         }
         //File
-
-        return \Redirect::back()->with('message', 'Guardado con éxito');
 	}
 
 }

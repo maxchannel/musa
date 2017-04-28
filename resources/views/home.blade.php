@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -13,18 +13,41 @@
             @endif
 
             @if(Auth::check())
+
+
+
             <div class="panel panel-default">
-                <div class="panel-heading">Feed</div>
+
                 <div class="panel-body">
-                    <hr>
-                    <a href="">Max</a> añadio una pintura nueva - hace 7 horas
-                    <hr>
+                    <div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Hola mundo
+                    </div>
+                    <div class="col-md-2">
+                        4 semanas
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <img src="{{ asset('files/images/imagen.png') }}" class="img-responsive" style="width:100%" alt="wake">
+                    </div>
+                </div>
+                <div class="row"><br>
+                    <div class="col-md-10">
+                        Hola mundo, lorem
+                    </div>
+                    <div class="col-md-2">
+                        xx
+                    </div>
+                </div>
+            </div>
                 </div>
             </div>
             @endif
             
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 @endsection

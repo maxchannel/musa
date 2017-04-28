@@ -16,6 +16,7 @@ use App\PieceLoan;
 use App\PieceArea;
 use App\PieceCube;
 use App\PieceTiraje;
+use App\PieceBase;
 use App\PieceAcquisition;
 use App\PieceTechnique;
 use App\PieceValuation;
@@ -102,18 +103,21 @@ class PieceController extends Controller
 		if($request->input('type_id') == 1)//Pintura
 		{
 			//Sino existe la tecnica se guarda y se asocia
-			$techs_news = array();
-			foreach($request->input('paint_tech_id') as $tech)
-			{
-				$xyz = Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
-				$techs_news[] = $xyz->id; 
-			}
-		    foreach($techs_news as $_new)
-		    {
-		    	$author = new PieceTechnique;
-        		$author->piece_id = $piece->id;
-        		$author->technique_id = $_new;
-        		$author->save();
+			if($request->input('paint_tech_id') != "")
+			{	
+    			$techs_news = array();
+    			foreach($request->input('paint_tech_id') as $tech)
+    			{
+    				$xyz = Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
+    				$techs_news[] = $xyz->id; 
+    			}
+    		    foreach($techs_news as $_new)
+    		    {
+    		    	$author = new PieceTechnique;
+            		$author->piece_id = $piece->id;
+            		$author->technique_id = $_new;
+            		$author->save();
+    		    }
 		    }
 		    //Sino existe la tecnica se guarda y se asocia
 
@@ -134,21 +138,34 @@ class PieceController extends Controller
 		    $montaje->save();
 
     		//Si tienes firma
-    		if($request->input('paint_sign') != "")
+    		if($request->input('sign_paint') != "")
     		{
         		$sign = new PieceSignature;
         		$sign->piece_id = $piece->id;
-        		$sign->firm = $request->input('paint_sign');
+        		$sign->firm = $request->input('sign_paint');
         		$sign->save();
     	    }
     		
 		}elseif($request->input('type_id') == 2)//Gráfica
 		{
-			//Sino existe la tecnica se guarda
-			foreach($request->input('tecnica1') as $tech)
-			{
-				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Gráfica']);
-			}
+			//Sino existe la tecnica se guarda y se asocia
+			if($request->input('paint_tech_id') != "")
+			{	
+    			$techs_news = array();
+    			foreach($request->input('paint_tech_id') as $tech)
+    			{
+    				$xyz = Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Pintura']);
+    				$techs_news[] = $xyz->id; 
+    			}
+    		    foreach($techs_news as $_new)
+    		    {
+    		    	$author = new PieceTechnique;
+            		$author->piece_id = $piece->id;
+            		$author->technique_id = $_new;
+            		$author->save();
+    		    }
+		    }
+		    //Sino existe la tecnica se guarda y se asocia
 
 			//Si tiene un tiraje
     		if($request->input('graph_tiraje') != "")
@@ -156,6 +173,15 @@ class PieceController extends Controller
         		$sign = new PieceTiraje;
         		$sign->piece_id = $piece->id;
         		$sign->contenido = $request->input('graph_tiraje');
+        		$sign->save();
+    	    }
+
+    	    //Si tienes firma
+    		if($request->input('graph_sign') != "")
+    		{
+        		$sign = new PieceSignature;
+        		$sign->piece_id = $piece->id;
+        		$sign->firm = $request->input('graph_sign');
         		$sign->save();
     	    }
 
@@ -191,6 +217,20 @@ class PieceController extends Controller
 		    $montaje->height = $request->input('cube_height');
 		    $montaje->long = $request->input('cube_long');
 		    $montaje->save();
+
+		    //Si tiene un tiraje
+    		if($request->input('instalation_base') != "")
+    		{
+        		//Base
+     		    $montaje = new PieceBase;
+     		    $montaje->piece_id = $piece->id;
+     		    $montaje->material = $request->input('material');
+     		    $montaje->width = $request->input('cube_base_width');
+     		    $montaje->height = $request->input('cube_base_height');
+     		    $montaje->long = $request->input('cube_base_long');
+     		    $montaje->save();
+    	    }
+
 		}elseif($request->input('type_id') == 4)//Fotografia
 		{
 			//Marco
@@ -208,14 +248,33 @@ class PieceController extends Controller
 		    $montaje->width = $request->input('photo_sin_width');
 		    $montaje->height = $request->input('photo_sin_height');
 		    $montaje->save();
+
+		    //Si tienes firma
+    		if($request->input('photo_sign') != "")
+    		{
+        		$sign = new PieceSignature;
+        		$sign->piece_id = $piece->id;
+        		$sign->firm = $request->input('photo_sign');
+        		$sign->save();
+    	    }
     		
 		}elseif($request->input('type_id') == 5)//Dibujo
 		{
-			//Sino existe la tecnica se guarda
-			foreach($request->input('tecnica1') as $tech)
+			//Sino existe la tecnica se guarda y se asocia
+			$techs_news = array();
+			foreach($request->input('draw_tech_id') as $tech)
 			{
-				Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Dibujo']);
+				$xyz = Technique::firstOrCreate(['name' => $tech, 'tipo'=>'Dibujo']);
+				$techs_news[] = $xyz->id; 
 			}
+		    foreach($techs_news as $_new)
+		    {
+		    	$author = new PieceTechnique;
+        		$author->piece_id = $piece->id;
+        		$author->technique_id = $_new;
+        		$author->save();
+		    }
+		    //Sino existe la tecnica se guarda y se asocia
 
 			//Marco
 			$montaje = new PieceArea;
@@ -232,6 +291,15 @@ class PieceController extends Controller
 		    $montaje->width = $request->input('draw_sin_width');
 		    $montaje->height = $request->input('draw_sin_height');
 		    $montaje->save();
+
+		    //Si tienes firma
+    		if($request->input('draw_sign') != "")
+    		{
+        		$sign = new PieceSignature;
+        		$sign->piece_id = $piece->id;
+        		$sign->firm = $request->input('draw_sign');
+        		$sign->save();
+    	    }
     		
 		}
 
@@ -294,6 +362,11 @@ class PieceController extends Controller
 		$p_loan->end = $request->input('end');
 		$p_loan->save();
 
+		//Seteando que la pieza fue prestada
+		$piece = Piece::find($request->input('piece_id'));
+		$piece->loan = 1;
+		$piece->save();
+
 		//File
         $files = \Input::file('file');
         if(!empty($files[0]))//Solo si se manda 1 imagen
@@ -323,19 +396,14 @@ class PieceController extends Controller
                     $file->move('files/files/', $newName); 
                 }else 
                 {
-                    \Session::flash('image-message', 'Los archivos deben pesar máximo 10Mb');
+                    \Session::flash('message', 'Los archivos deben pesar máximo 10Mb');
                 }
             }
         }else
         {
-            return \Redirect::back()->with('image-message', 'Debes seleccionar al menos 1 imágen');
+            return \Redirect::back()->with('message', 'Se guardo el prestamo sin algún Archivo');
         }
         //File
-
-		//Seteando que la pieza fue prestada
-		$piece = Piece::find($request->input('piece_id'));
-		$piece->loan = 1;
-		$piece->save();
 
 		return \Redirect::back()->with('message', 'Guardado con éxito');
 	}

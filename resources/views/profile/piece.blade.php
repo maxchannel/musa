@@ -16,7 +16,7 @@
                         <li>Autor: <a href="{{route('command_line', ['query'=>$piece->authors->first()->name])}}">{{ $piece->authors->first()->name }}</a></li>
                         <li>Año: <a href="{{route('command_line', ['query'=>$piece->year])}}">{{ $piece->year }}</a></li>
                         <li>Número de Elementos: {{ $piece->elements }}</li>
-                        <li>Valor económico: {{ $piece->price }} $</li>
+                        <li>Valuación: {{ $piece->price }} $</li>
                         @if(count($piece->conservations))
                             <li>Estado: {{ $piece->conservations->first()->state }} (<a href="#" data-toggle="modal" data-target="#modanConser">Conservaciones</a>)</li> 
                         @endif
